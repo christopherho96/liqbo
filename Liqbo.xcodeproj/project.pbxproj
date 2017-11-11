@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6653F8DB831804E0228240CA /* Pods_Liqbo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EAC6718575DB73A317116 /* Pods_Liqbo.framework */; };
+		FE094F011FB6A72700B82435 /* product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F001FB6A72700B82435 /* product.swift */; };
+		FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D131FB6688A00700E36 /* AppDelegate.swift */; };
+		FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D151FB6688B00700E36 /* HomeViewController.swift */; };
+		FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D171FB6688B00700E36 /* Main.storyboard */; };
+		FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */; };
+		FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */; };
+		FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C6EAC6718575DB73A317116 /* Pods_Liqbo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liqbo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E1A5E44272075E3BB4C08B3 /* Pods-Liqbo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liqbo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo.release.xcconfig"; sourceTree = "<group>"; };
+		B687967FF5D666CC23C2F58B /* Pods-Liqbo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liqbo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo.debug.xcconfig"; sourceTree = "<group>"; };
+		FE094F001FB6A72700B82435 /* product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = product.swift; sourceTree = "<group>"; };
+		FE4E1D101FB6688A00700E36 /* Liqbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liqbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE4E1D131FB6688A00700E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FE4E1D151FB6688B00700E36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FE4E1D181FB6688B00700E36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FE4E1D1B1FB6688B00700E36 /* Liqbo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Liqbo.xcdatamodel; sourceTree = "<group>"; };
+		FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE4E1D201FB6688B00700E36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FE4E1D221FB6688B00700E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE4E1D0D1FB6688A00700E36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6653F8DB831804E0228240CA /* Pods_Liqbo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27EE9EFD3B7FACE5C516E27E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C6EAC6718575DB73A317116 /* Pods_Liqbo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3DA3D587A73A4B16BACF984 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B687967FF5D666CC23C2F58B /* Pods-Liqbo.debug.xcconfig */,
+				3E1A5E44272075E3BB4C08B3 /* Pods-Liqbo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE4E1D071FB6688A00700E36 = {
+			isa = PBXGroup;
+			children = (
+				FE4E1D121FB6688A00700E36 /* Liqbo */,
+				FE4E1D111FB6688A00700E36 /* Products */,
+				E3DA3D587A73A4B16BACF984 /* Pods */,
+				27EE9EFD3B7FACE5C516E27E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FE4E1D111FB6688A00700E36 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE4E1D101FB6688A00700E36 /* Liqbo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE4E1D121FB6688A00700E36 /* Liqbo */ = {
+			isa = PBXGroup;
+			children = (
+				FE4E1D281FB668B100700E36 /* Models */,
+				FE4E1D291FB668BB00700E36 /* Controllers */,
+				FE4E1D2A1FB668C400700E36 /* View */,
+				FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */,
+				FE4E1D221FB6688B00700E36 /* Info.plist */,
+				FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */,
+			);
+			path = Liqbo;
+			sourceTree = "<group>";
+		};
+		FE4E1D281FB668B100700E36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FE094F001FB6A72700B82435 /* product.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FE4E1D291FB668BB00700E36 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE4E1D131FB6688A00700E36 /* AppDelegate.swift */,
+				FE4E1D151FB6688B00700E36 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FE4E1D2A1FB668C400700E36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE4E1D171FB6688B00700E36 /* Main.storyboard */,
+				FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE4E1D0F1FB6688A00700E36 /* Liqbo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE4E1D251FB6688B00700E36 /* Build configuration list for PBXNativeTarget "Liqbo" */;
+			buildPhases = (
+				692BCBFAFEB73930D154F776 /* [CP] Check Pods Manifest.lock */,
+				FE4E1D0C1FB6688A00700E36 /* Sources */,
+				FE4E1D0D1FB6688A00700E36 /* Frameworks */,
+				FE4E1D0E1FB6688A00700E36 /* Resources */,
+				78258792192EB9F6A0858455 /* [CP] Embed Pods Frameworks */,
+				B62B961BC686E5B1A6D42C1E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Liqbo;
+			productName = Liqbo;
+			productReference = FE4E1D101FB6688A00700E36 /* Liqbo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE4E1D081FB6688A00700E36 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = chovo;
+				TargetAttributes = {
+					FE4E1D0F1FB6688A00700E36 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FE4E1D0B1FB6688A00700E36 /* Build configuration list for PBXProject "Liqbo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE4E1D071FB6688A00700E36;
+			productRefGroup = FE4E1D111FB6688A00700E36 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE4E1D0F1FB6688A00700E36 /* Liqbo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE4E1D0E1FB6688A00700E36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */,
+				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
+				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		692BCBFAFEB73930D154F776 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Liqbo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78258792192EB9F6A0858455 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B62B961BC686E5B1A6D42C1E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE4E1D0C1FB6688A00700E36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */,
+				FE094F011FB6A72700B82435 /* product.swift in Sources */,
+				FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */,
+				FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FE4E1D171FB6688B00700E36 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE4E1D181FB6688B00700E36 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE4E1D201FB6688B00700E36 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE4E1D231FB6688B00700E36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE4E1D241FB6688B00700E36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE4E1D261FB6688B00700E36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B687967FF5D666CC23C2F58B /* Pods-Liqbo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AU59PR2TV;
+				INFOPLIST_FILE = Liqbo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chovo.Liqbo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE4E1D271FB6688B00700E36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E1A5E44272075E3BB4C08B3 /* Pods-Liqbo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AU59PR2TV;
+				INFOPLIST_FILE = Liqbo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chovo.Liqbo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE4E1D0B1FB6688A00700E36 /* Build configuration list for PBXProject "Liqbo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4E1D231FB6688B00700E36 /* Debug */,
+				FE4E1D241FB6688B00700E36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE4E1D251FB6688B00700E36 /* Build configuration list for PBXNativeTarget "Liqbo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4E1D261FB6688B00700E36 /* Debug */,
+				FE4E1D271FB6688B00700E36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE4E1D1B1FB6688B00700E36 /* Liqbo.xcdatamodel */,
+			);
+			currentVersion = FE4E1D1B1FB6688B00700E36 /* Liqbo.xcdatamodel */;
+			path = Liqbo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FE4E1D081FB6688A00700E36 /* Project object */;
+}
