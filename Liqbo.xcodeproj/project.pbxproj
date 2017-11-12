@@ -12,7 +12,7 @@
 		FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F021FB7C99E00B82435 /* StoreDataModel.swift */; };
 		FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F041FB7CF6500B82435 /* SalesViewController.swift */; };
 		FE094F091FB7D30500B82435 /* CustomSaleItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F071FB7D30500B82435 /* CustomSaleItemCell.swift */; };
-		FE094F0A1FB7D30500B82435 /* CustomSaleItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE094F081FB7D30500B82435 /* CustomSaleItemCell.xib */; };
+		FE094F0A1FB7D30500B82435 /* SaleItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE094F081FB7D30500B82435 /* SaleItemCell.xib */; };
 		FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */; };
 		FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D131FB6688A00700E36 /* AppDelegate.swift */; };
 		FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D151FB6688B00700E36 /* HomeViewController.swift */; };
@@ -30,7 +30,7 @@
 		FE094F021FB7C99E00B82435 /* StoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreDataModel.swift; path = "../../../udemy/ios11bootcamp/Flash-Chat-iOS11/StoreDataModel.swift"; sourceTree = "<group>"; };
 		FE094F041FB7CF6500B82435 /* SalesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SalesViewController.swift; path = "../../../udemy/ios11bootcamp/Flash-Chat-iOS11/SalesViewController.swift"; sourceTree = "<group>"; };
 		FE094F071FB7D30500B82435 /* CustomSaleItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSaleItemCell.swift; path = "../../../../udemy/ios11bootcamp/Flash-Chat-iOS11/CustomSaleItemCell.swift"; sourceTree = "<group>"; };
-		FE094F081FB7D30500B82435 /* CustomSaleItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomSaleItemCell.xib; path = "../../../../udemy/ios11bootcamp/Flash-Chat-iOS11/CustomSaleItemCell.xib"; sourceTree = "<group>"; };
+		FE094F081FB7D30500B82435 /* SaleItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaleItemCell.xib; path = "../../../../udemy/ios11bootcamp/Flash-Chat-iOS11/SaleItemCell.xib"; sourceTree = "<group>"; };
 		FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaleItemModel.swift; path = "../../../udemy/ios11bootcamp/Flash-Chat-iOS11/SaleItemModel.swift"; sourceTree = "<group>"; };
 		FE4E1D101FB6688A00700E36 /* Liqbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liqbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE4E1D131FB6688A00700E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				FE094F071FB7D30500B82435 /* CustomSaleItemCell.swift */,
-				FE094F081FB7D30500B82435 /* CustomSaleItemCell.xib */,
+				FE094F081FB7D30500B82435 /* SaleItemCell.xib */,
 			);
 			path = CustomSaleItemCell;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 			files = (
 				FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */,
 				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
-				FE094F0A1FB7D30500B82435 /* CustomSaleItemCell.xib in Resources */,
+				FE094F0A1FB7D30500B82435 /* SaleItemCell.xib in Resources */,
 				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
