@@ -24,21 +24,44 @@
             </objects>
             <point key="canvasLocation" x="-2155" y="1762"/>
         </scene>
-        <!--View Controller-->
+        <!--Sales View Controller-->
         <scene sceneID="9uO-v7-ptT">
             <objects>
-                <viewController id="s1b-zU-ddb" sceneMemberID="viewController">
+                <viewController id="s1b-zU-ddb" customClass="SalesViewController" customModule="Liqbo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ryI-1F-nSi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vy4-04-QJL">
+                                <rect key="frame" x="0.0" y="64" width="320" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-qk-bae">
+                                <rect key="frame" x="0.0" y="120" width="320" height="399"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vy4-04-QJL" firstAttribute="leading" secondItem="Q3J-8b-Cq9" secondAttribute="leading" id="DWx-rE-R97"/>
+                            <constraint firstItem="0Nd-qk-bae" firstAttribute="top" secondItem="vy4-04-QJL" secondAttribute="bottom" id="WP0-1p-ydL"/>
+                            <constraint firstItem="0Nd-qk-bae" firstAttribute="bottom" secondItem="Q3J-8b-Cq9" secondAttribute="bottom" id="YI1-Sw-grJ"/>
+                            <constraint firstItem="0Nd-qk-bae" firstAttribute="trailing" secondItem="Q3J-8b-Cq9" secondAttribute="trailing" id="ZaT-8P-vv7"/>
+                            <constraint firstItem="0Nd-qk-bae" firstAttribute="top" secondItem="vy4-04-QJL" secondAttribute="bottom" id="b8y-rp-ERD"/>
+                            <constraint firstItem="0Nd-qk-bae" firstAttribute="leading" secondItem="Q3J-8b-Cq9" secondAttribute="leading" id="lkd-Xg-d5i"/>
+                            <constraint firstItem="vy4-04-QJL" firstAttribute="trailing" secondItem="Q3J-8b-Cq9" secondAttribute="trailing" id="sxm-de-RUY"/>
+                            <constraint firstItem="vy4-04-QJL" firstAttribute="top" secondItem="Q3J-8b-Cq9" secondAttribute="top" id="tXh-Zr-DeK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Q3J-8b-Cq9"/>
                     </view>
                     <navigationItem key="navigationItem" id="mQn-hi-OQu"/>
+                    <connections>
+                        <outlet property="salesTableView" destination="0Nd-qk-bae" id="vYv-tI-fDC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dee-Iv-b1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1118" y="1863"/>
+            <point key="canvasLocation" x="-1119.375" y="1862.323943661972"/>
         </scene>
         <!--Search-->
         <scene sceneID="Dqm-hT-a9T">

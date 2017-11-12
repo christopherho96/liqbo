@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     let ACCESS_KEY = "MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC"
 
     var LCBO_SEARCH_ANY_PRODUCT_URL = "https://lcboapi.com/products?access_key=MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC"
+    
+    var userSearchText: String = ""
 
     @IBOutlet weak var searchBar: UISearchBar!
 
@@ -26,12 +28,21 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         searchBar.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     //MARK: - Networking
@@ -57,9 +68,13 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        userSearchText = searchBar.text!
+        getProductData(url: LCBO_SEARCH_ANY_PRODUCT_URL, parameters: ["q": userSearchText])
+        dismissKeyboard()
     }
+    
+    
 
     //MARK: - JSON Parsing
     /***************************************************************/
