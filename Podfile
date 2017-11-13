@@ -8,6 +8,8 @@ target 'Liqbo' do
   # Pods for Liqbo
 
     pod 'Alamofire'
-    pod 'SwiftyJSON' 
+    pod 'AlamofireImage'
+    pod 'SwiftyJSON'
+    pod 'SVProgressHUD'
 
 end
