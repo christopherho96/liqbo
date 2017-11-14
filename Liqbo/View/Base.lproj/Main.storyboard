@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orange gradient background" translatesAutoresizingMaskIntoConstraints="NO" id="QSQ-HF-lFt">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-qk-bae">
                                 <rect key="frame" x="0.0" y="120" width="320" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,18 +31,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QSQ-HF-lFt" firstAttribute="bottom" secondItem="Q3J-8b-Cq9" secondAttribute="bottom" id="5Z3-Nj-9DF"/>
-                            <constraint firstItem="QSQ-HF-lFt" firstAttribute="top" secondItem="Q3J-8b-Cq9" secondAttribute="top" id="PWO-jp-D4G"/>
                             <constraint firstItem="0Nd-qk-bae" firstAttribute="top" secondItem="et4-3V-KUq" secondAttribute="bottom" id="Q3Z-wP-Kgn"/>
                             <constraint firstItem="0Nd-qk-bae" firstAttribute="bottom" secondItem="Q3J-8b-Cq9" secondAttribute="bottom" id="Qe6-cW-z2n"/>
                             <constraint firstItem="0Nd-qk-bae" firstAttribute="leading" secondItem="Q3J-8b-Cq9" secondAttribute="leading" id="Ufy-4a-f3k"/>
                             <constraint firstItem="et4-3V-KUq" firstAttribute="top" secondItem="Q3J-8b-Cq9" secondAttribute="top" id="Z0i-8D-fuo"/>
-                            <constraint firstItem="QSQ-HF-lFt" firstAttribute="leading" secondItem="Q3J-8b-Cq9" secondAttribute="leading" id="jDr-5p-zLE"/>
                             <constraint firstItem="0Nd-qk-bae" firstAttribute="top" secondItem="et4-3V-KUq" secondAttribute="bottom" id="jUa-jW-I6K"/>
                             <constraint firstItem="et4-3V-KUq" firstAttribute="trailing" secondItem="Q3J-8b-Cq9" secondAttribute="trailing" id="mQM-ER-9GQ"/>
                             <constraint firstItem="0Nd-qk-bae" firstAttribute="trailing" secondItem="Q3J-8b-Cq9" secondAttribute="trailing" id="rWu-l3-oAj"/>
                             <constraint firstItem="et4-3V-KUq" firstAttribute="leading" secondItem="Q3J-8b-Cq9" secondAttribute="leading" id="vkC-nA-sYg"/>
-                            <constraint firstItem="QSQ-HF-lFt" firstAttribute="trailing" secondItem="Q3J-8b-Cq9" secondAttribute="trailing" id="zot-be-pM8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q3J-8b-Cq9"/>
                     </view>
@@ -205,6 +198,5 @@
         <image name="Fill 19" width="32" height="32"/>
         <image name="Fill 95" width="32" height="30"/>
         <image name="drink-beer" width="3072" height="4608"/>
-        <image name="orange gradient background" width="375" height="667"/>
     </resources>
 </document>
