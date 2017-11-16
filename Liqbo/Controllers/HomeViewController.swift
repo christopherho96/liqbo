@@ -10,9 +10,10 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class HomeViewController: UIViewController, UISearchBarDelegate {
+class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    
+    var arrayOfSearchItems: [ProductDataModel] = []
+
     let ACCESS_KEY = "MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC"
 
     var LCBO_SEARCH_ANY_PRODUCT_URL = "https://lcboapi.com/products?access_key=MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC"
@@ -21,6 +22,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
 
+    @IBOutlet weak var searchTableView: UITableView!
     
     
     override func viewDidLoad() {
@@ -29,6 +31,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         
         
         searchBar.delegate = self
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        searchTableView.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "customProductItemCell")
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -63,7 +68,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
                 
                 //the JSON() cast comes from SWiftyJSON library
                 let productsJSON : JSON = JSON(response.result.value!)
+                print(productsJSON["result"].count)
                 print(productsJSON["result"][0]["name"])
+                self.updateSearchItemsData(json: productsJSON)
                 
             }else{
                 print("Error \(response.result.error!)")
@@ -72,6 +79,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //this will clear the search view
+        arrayOfSearchItems.removeAll()
         userSearchText = searchBar.text!
         getProductData(url: LCBO_SEARCH_ANY_PRODUCT_URL, parameters: ["q": userSearchText])
         dismissKeyboard()
@@ -82,7 +91,75 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     //MARK: - JSON Parsing
     /***************************************************************/
 
+    func updateSearchItemsData(json: JSON){
+        
+        if let saleItems = json["result"].array {
+            
+            for saleItem in saleItems{
+                
+                let productDataModel = ProductDataModel()
+                
+                productDataModel.name = saleItem["name"].stringValue
+                productDataModel.id = saleItem["id"].intValue
+                productDataModel.price_in_cents = saleItem["price_in_cents"].floatValue
+                productDataModel.primary_category = saleItem["primary_category"].stringValue
+                productDataModel.has_limited_time_offer = saleItem["has_limited_time_offer"].boolValue
+                productDataModel.limited_time_offer_savings_in_cents = saleItem["limited_time_offer_savings_in_cents"].floatValue
+                productDataModel.limited_time_offer_ends_on = saleItem["limited_time_offer_ends_on"].stringValue
+                productDataModel.package = saleItem["package"].stringValue
+                productDataModel.total_package_units = saleItem["total_package_units"].intValue
+                productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
+                productDataModel.alcohol_content = saleItem["alcohol_content"].intValue
+                
+                if saleItem["image_thumb_url"] != nil{
+                    productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!
+                }
 
+                
+                
+                //there may be an error here since it might unwrap a nil
+                arrayOfSearchItems.append(productDataModel)
+                
+            }
+            self.searchTableView.reloadData()
+        }else{
+            print("error parsing the json stuff")
+        }
+    }
+    
+    //update UI
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return arrayOfSearchItems.count
+  
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+      let cell = tableView.dequeueReusableCell(withIdentifier: "customProductItemCell", for: indexPath) as! CustomProductItemCell
+        
+        cell.productName.text = arrayOfSearchItems[indexPath.row].name
+        cell.productName.sizeToFit()
+        
+        cell.productPackage.text = arrayOfSearchItems[indexPath.row].package
+        cell.productPackage.textColor = UIColor.lightGray
+        cell.productPackage.sizeToFit()
+        
+        cell.productPrice.text = "Price: " + String(format: "%.2f", arrayOfSearchItems[indexPath.row].price_in_cents / 100)
+        cell.productPrice.textColor = UIColor.lightGray
+        cell.productPrice.sizeToFit()
+        
+        cell.productImage.af_setImage(withURL: arrayOfSearchItems[indexPath.row].image_thumb_url)
+        cell.productImage.clipsToBounds = true
+        cell.productImage.layer.cornerRadius = 8;
+
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(80)
+    }
 
 }
 
