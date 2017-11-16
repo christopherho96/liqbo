@@ -111,7 +111,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
                 productDataModel.alcohol_content = saleItem["alcohol_content"].intValue
                 
-                if saleItem["image_thumb_url"] != nil{
+                if saleItem["image_thumb_url"] != JSON.null{
                     productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!
                 }
 
