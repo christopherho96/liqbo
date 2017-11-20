@@ -11,8 +11,6 @@
 		FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F001FB6A72700B82435 /* ProductDataModel.swift */; };
 		FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F021FB7C99E00B82435 /* StoreDataModel.swift */; };
 		FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F041FB7CF6500B82435 /* SalesViewController.swift */; };
-		FE094F091FB7D30500B82435 /* CustomSaleItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F071FB7D30500B82435 /* CustomSaleItemCell.swift */; };
-		FE094F0A1FB7D30500B82435 /* SaleItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE094F081FB7D30500B82435 /* SaleItemCell.xib */; };
 		FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */; };
 		FE10F3931FBD011800385CF6 /* CustomProductItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10F3911FBD011800385CF6 /* CustomProductItemCell.swift */; };
 		FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE10F3921FBD011800385CF6 /* ProductItemCell.xib */; };
@@ -24,6 +22,8 @@
 		FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */; };
 		FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */; };
 		FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */; };
+		FEA86AC41FC27EDF00C1B9A9 /* CustomSaleItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA86AC21FC27EDF00C1B9A9 /* CustomSaleItemCell.swift */; };
+		FEA86AC51FC27EDF00C1B9A9 /* SaleItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA86AC31FC27EDF00C1B9A9 /* SaleItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +33,6 @@
 		FE094F001FB6A72700B82435 /* ProductDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataModel.swift; sourceTree = "<group>"; };
 		FE094F021FB7C99E00B82435 /* StoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataModel.swift; sourceTree = "<group>"; };
 		FE094F041FB7CF6500B82435 /* SalesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesViewController.swift; sourceTree = "<group>"; };
-		FE094F071FB7D30500B82435 /* CustomSaleItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaleItemCell.swift; sourceTree = "<group>"; };
-		FE094F081FB7D30500B82435 /* SaleItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaleItemCell.xib; sourceTree = "<group>"; };
 		FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemModel.swift; sourceTree = "<group>"; };
 		FE10F3911FBD011800385CF6 /* CustomProductItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProductItemCell.swift; sourceTree = "<group>"; };
 		FE10F3921FBD011800385CF6 /* ProductItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
@@ -48,6 +46,8 @@
 		FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE4E1D201FB6688B00700E36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE4E1D221FB6688B00700E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEA86AC21FC27EDF00C1B9A9 /* CustomSaleItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaleItemCell.swift; sourceTree = "<group>"; };
+		FEA86AC31FC27EDF00C1B9A9 /* SaleItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaleItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,15 +77,6 @@
 				3E1A5E44272075E3BB4C08B3 /* Pods-Liqbo.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		FE094F061FB7D2DA00B82435 /* CustomSaleItemCell */ = {
-			isa = PBXGroup;
-			children = (
-				FE094F071FB7D30500B82435 /* CustomSaleItemCell.swift */,
-				FE094F081FB7D30500B82435 /* SaleItemCell.xib */,
-			);
-			path = CustomSaleItemCell;
 			sourceTree = "<group>";
 		};
 		FE10F3901FBD00FA00385CF6 /* CustomProductItemCell */ = {
@@ -153,12 +144,21 @@
 		FE4E1D2A1FB668C400700E36 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FEA86AC11FC27EB600C1B9A9 /* CustomSaleItemCell */,
 				FE10F3901FBD00FA00385CF6 /* CustomProductItemCell */,
-				FE094F061FB7D2DA00B82435 /* CustomSaleItemCell */,
 				FE4E1D171FB6688B00700E36 /* Main.storyboard */,
 				FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FEA86AC11FC27EB600C1B9A9 /* CustomSaleItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				FEA86AC21FC27EDF00C1B9A9 /* CustomSaleItemCell.swift */,
+				FEA86AC31FC27EDF00C1B9A9 /* SaleItemCell.xib */,
+			);
+			path = CustomSaleItemCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +225,8 @@
 			files = (
 				FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */,
 				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
+				FEA86AC51FC27EDF00C1B9A9 /* SaleItemCell.xib in Resources */,
 				FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */,
-				FE094F0A1FB7D30500B82435 /* SaleItemCell.xib in Resources */,
 				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +307,7 @@
 				FE10F3931FBD011800385CF6 /* CustomProductItemCell.swift in Sources */,
 				FE10F3981FBD101200385CF6 /* CartViewController.swift in Sources */,
 				FE10F3961FBD100000385CF6 /* FindStoreViewController.swift in Sources */,
-				FE094F091FB7D30500B82435 /* CustomSaleItemCell.swift in Sources */,
+				FEA86AC41FC27EDF00C1B9A9 /* CustomSaleItemCell.swift in Sources */,
 				FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

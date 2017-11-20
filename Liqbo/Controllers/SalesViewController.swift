@@ -115,6 +115,8 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
                 
                 allSaleItems.append(saleItemModel)
+
+
                 
             }
             self.salesTableView.reloadData()
@@ -131,11 +133,11 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "customSaleItemCell", for: indexPath) as! CustomSaleItemCell
         
         cell.itemName.text = allSaleItems[indexPath.row].name
         cell.itemName.textColor = UIColor.darkGray
-        cell.itemName.sizeToFit()
         
         cell.itemPackage.text = allSaleItems[indexPath.row].package
         cell.itemPackage.textColor = UIColor.lightGray
@@ -145,9 +147,9 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.itemPrice.textColor = UIColor.lightGray
         cell.itemPrice.sizeToFit()
         
-        cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
+     /*   cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
         cell.itemSaleUntil.textColor = UIColor.lightGray
-        cell.itemSaleUntil.sizeToFit()
+        cell.itemSaleUntil.sizeToFit()*/
         
         
         cell.itemSave.applyDesign()
@@ -164,10 +166,10 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
         
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(120)
+        return CGFloat(80)
     }
+    
     
 
 }
