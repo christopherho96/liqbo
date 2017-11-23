@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6653F8DB831804E0228240CA /* Pods_Liqbo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EAC6718575DB73A317116 /* Pods_Liqbo.framework */; };
+		FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0831461FC636BE00F1591B /* CustomStoreCell.swift */; };
+		FE0831491FC636BE00F1591B /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE0831471FC636BE00F1591B /* StoreCell.xib */; };
 		FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F001FB6A72700B82435 /* ProductDataModel.swift */; };
 		FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F021FB7C99E00B82435 /* StoreDataModel.swift */; };
 		FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F041FB7CF6500B82435 /* SalesViewController.swift */; };
@@ -30,6 +32,8 @@
 		2C6EAC6718575DB73A317116 /* Pods_Liqbo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liqbo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1A5E44272075E3BB4C08B3 /* Pods-Liqbo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liqbo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo.release.xcconfig"; sourceTree = "<group>"; };
 		B687967FF5D666CC23C2F58B /* Pods-Liqbo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liqbo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo.debug.xcconfig"; sourceTree = "<group>"; };
+		FE0831461FC636BE00F1591B /* CustomStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStoreCell.swift; sourceTree = "<group>"; };
+		FE0831471FC636BE00F1591B /* StoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
 		FE094F001FB6A72700B82435 /* ProductDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataModel.swift; sourceTree = "<group>"; };
 		FE094F021FB7C99E00B82435 /* StoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataModel.swift; sourceTree = "<group>"; };
 		FE094F041FB7CF6500B82435 /* SalesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 				3E1A5E44272075E3BB4C08B3 /* Pods-Liqbo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE0831451FC6369C00F1591B /* CustomStoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				FE0831461FC636BE00F1591B /* CustomStoreCell.swift */,
+				FE0831471FC636BE00F1591B /* StoreCell.xib */,
+			);
+			path = CustomStoreCell;
 			sourceTree = "<group>";
 		};
 		FE10F3901FBD00FA00385CF6 /* CustomProductItemCell */ = {
@@ -144,6 +157,7 @@
 		FE4E1D2A1FB668C400700E36 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE0831451FC6369C00F1591B /* CustomStoreCell */,
 				FEA86AC11FC27EB600C1B9A9 /* CustomSaleItemCell */,
 				FE10F3901FBD00FA00385CF6 /* CustomProductItemCell */,
 				FE4E1D171FB6688B00700E36 /* Main.storyboard */,
@@ -225,6 +239,7 @@
 			files = (
 				FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */,
 				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
+				FE0831491FC636BE00F1591B /* StoreCell.xib in Resources */,
 				FEA86AC51FC27EDF00C1B9A9 /* SaleItemCell.xib in Resources */,
 				FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */,
 				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
@@ -302,6 +317,7 @@
 				FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */,
 				FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */,
 				FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */,
+				FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */,
 				FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */,
 				FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */,
 				FE10F3931FBD011800385CF6 /* CustomProductItemCell.swift in Sources */,

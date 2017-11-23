@@ -153,7 +153,7 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         cell.itemSave.applyDesign()
-        cell.itemSave.text =  String(format: "%.2f", allSaleItems[indexPath.row].limited_time_offer_savings_in_cents / 100)
+        cell.itemSave.text =  "-" + String(format: "%.2f", allSaleItems[indexPath.row].limited_time_offer_savings_in_cents / 100)
         cell.itemSave.layer.borderWidth = 1
         cell.itemSave.layer.borderColor = UIColor.red.cgColor
 

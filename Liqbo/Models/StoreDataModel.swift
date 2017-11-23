@@ -12,8 +12,13 @@ class StoreDateModel{
     
     var address_line_1 = ""
     var city = ""
+    var store_no = 0
+    var distance_in_meters: Float = 0
     var latitude: Float = 0
     var longitude: Float = 0
+    
+    var openingHours = ""
+    var closingHours = "" 
     
     var sunday_open: Float = 0
     var sunday_close: Float = 0
