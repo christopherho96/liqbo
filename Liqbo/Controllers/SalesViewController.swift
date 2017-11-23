@@ -41,7 +41,6 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         salesTableView.separatorStyle = .singleLine
         
         
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -141,15 +140,15 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.itemPackage.text = allSaleItems[indexPath.row].package
         cell.itemPackage.textColor = UIColor.lightGray
-        cell.itemPackage.sizeToFit()
+
         
         cell.itemPrice.text = "Price: " + String(format: "%.2f", allSaleItems[indexPath.row].price_in_cents / 100)
         cell.itemPrice.textColor = UIColor.lightGray
-        cell.itemPrice.sizeToFit()
+       
         
-     /*   cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
+        cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
         cell.itemSaleUntil.textColor = UIColor.lightGray
-        cell.itemSaleUntil.sizeToFit()*/
+    
         
         
         cell.itemSave.applyDesign()
@@ -166,10 +165,6 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
         
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(80)
-    }
-    
     
 
 }
