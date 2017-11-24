@@ -41,9 +41,6 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         salesTableView.separatorStyle = .singleLine
         
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
     
         //removes 1px line from bottom of navigation tab bar
         self.navigationController!.navigationBar.isTranslucent = false
@@ -52,12 +49,6 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
     
     //MARK: - Networking
@@ -136,18 +127,17 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "customSaleItemCell", for: indexPath) as! CustomSaleItemCell
         
         cell.itemName.text = allSaleItems[indexPath.row].name
-        cell.itemName.textColor = UIColor.darkGray
+
         
         cell.itemPackage.text = allSaleItems[indexPath.row].package
-        cell.itemPackage.textColor = UIColor.lightGray
 
         
         cell.itemPrice.text = "Price: " + String(format: "%.2f", allSaleItems[indexPath.row].price_in_cents / 100)
-        cell.itemPrice.textColor = UIColor.lightGray
+
        
         
         cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
-        cell.itemSaleUntil.textColor = UIColor.lightGray
+
     
         
         
@@ -164,6 +154,11 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.backgroundColor = .clear
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "segueSaleItem", sender: self)
+        print("This cell from the chat list was selected: \(indexPath.row)")
     }
     
 

@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
-    
+
     var arrayOfSearchItems: [ProductDataModel] = []
 
     let ACCESS_KEY = "MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC"
@@ -19,11 +19,19 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var LCBO_SEARCH_ANY_PRODUCT_URL = "https://lcboapi.com/products?access_key=MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC"
     
     var userSearchText: String = ""
+    
+    var itemDataToSendToDetailedView : ProductDataModel?
+    
+    
 
     @IBOutlet weak var searchBar: UISearchBar!
-
-    @IBOutlet weak var searchTableView: UITableView!
     
+    
+    
+    
+    
+    
+    @IBOutlet weak var searchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +39,16 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         
         
         searchBar.delegate = self
+        searchTableView.tableHeaderView = searchBar
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTableView.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "customProductItemCell")
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
         
-        self.navigationController!.navigationBar.isTranslucent = false
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //view.addGestureRecognizer(tap)
+        
+        //self.navigationController!.navigationBar.isTranslucent = false
     
     }
 
@@ -80,9 +90,25 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //this will clear the search view
+
         arrayOfSearchItems.removeAll()
         userSearchText = searchBar.text!
         getProductData(url: LCBO_SEARCH_ANY_PRODUCT_URL, parameters: ["q": userSearchText])
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.isUserInteractionEnabled = true
+        dismissKeyboard()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        searchBar.isUserInteractionEnabled = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.isUserInteractionEnabled = true
         dismissKeyboard()
     }
     
@@ -110,9 +136,15 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 productDataModel.total_package_units = saleItem["total_package_units"].intValue
                 productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
                 productDataModel.alcohol_content = saleItem["alcohol_content"].intValue
+                productDataModel.style = saleItem["style"].stringValue
+                productDataModel.description = saleItem["description"].stringValue
                 
                 if saleItem["image_thumb_url"] != JSON.null{
                     productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!
+                }
+                
+                if saleItem["image_url"] != JSON.null {
+                    productDataModel.image_url = saleItem["image_url"].url!
                 }
 
                 
@@ -160,6 +192,24 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(80)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("This cell from the chat list was selected: \(indexPath.row)")
+        itemDataToSendToDetailedView = arrayOfSearchItems[indexPath.row]
+    
+        performSegue(withIdentifier: "segueToDetailedItemView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToDetailedItemView" {
+            
+            let secondVC = segue.destination as! DetailedItemViewController
+            
+            secondVC.recivedItemData = itemDataToSendToDetailedView
+            
+        }
+    }
+    
 
 }
 
@@ -185,5 +235,7 @@ extension UIColor {
         )
     }
 }
+
+
 
 

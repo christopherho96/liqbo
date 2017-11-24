@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource  {
     
@@ -24,6 +25,7 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
     
     @IBAction func findStoresInMyLocationTapped(_ sender: Any) {
         arrayOfSearchStores.removeAll()
+        storeSearchBar.text = nil
         currentSearchState = false
         changeButtonProperties(currentState: false)
         getStoreData(url: LCBO_SEARCH_ANY_STORE_URL, parameters: params)
@@ -48,7 +50,7 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         setOpenAndCloseHoursToday()
         
         findStoresInMyLocationButton.isEnabled = false
-        findStoresInMyLocationButton.backgroundColor = UIColor(hex: "0096c1")
+        findStoresInMyLocationButton.backgroundColor = UIColor.darkGray
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
@@ -57,15 +59,9 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         
         storeTableView.delegate = self
         storeSearchBar.delegate = self
+ 
         storeTableView.dataSource = self
         storeTableView.register(UINib(nibName: "StoreCell", bundle: nil), forCellReuseIdentifier: "customStoreCell")
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        
-       // storeTableView.rowHeight = UITableViewAutomaticDimension
-       // storeTableView.estimatedRowHeight = 100
 
         //removes 1px line from bottom of navigation tab bar
         self.navigationController!.navigationBar.isTranslucent = false
@@ -85,6 +81,21 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         arrayOfSearchStores.removeAll()
         let userSearchText = storeSearchBar.text!
         getStoreData(url: LCBO_SEARCH_ANY_STORE_URL, parameters: ["geo": userSearchText])
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.isUserInteractionEnabled = true
+        dismissKeyboard()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        searchBar.isUserInteractionEnabled = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.isUserInteractionEnabled = true
         dismissKeyboard()
     }
     
@@ -96,6 +107,8 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
     
     func getStoreData (url: String, parameters: [String: String]){
         
+        
+        SVProgressHUD.show()
         //making http request with alamofire
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
@@ -157,6 +170,7 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         }else{
             print("error parsing the json stuff")
         }
+        SVProgressHUD.dismiss()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -261,8 +275,8 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         
         else{
             findStoresInMyLocationButton.isEnabled = true
-            findStoresInMyLocationButton.backgroundColor = UIColor(hex: "0096c1")
-            findStoresInMyLocationButton.setTitle("Find Stores in My Location", for: .normal)
+            findStoresInMyLocationButton.backgroundColor = UIColor(hex: "55AAE5")
+            findStoresInMyLocationButton.setTitle("Tap Here to Find Stores in My Location", for: .normal)
         }
     }
 }
