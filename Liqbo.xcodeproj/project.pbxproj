@@ -10,9 +10,9 @@
 		6653F8DB831804E0228240CA /* Pods_Liqbo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EAC6718575DB73A317116 /* Pods_Liqbo.framework */; };
 		FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0831461FC636BE00F1591B /* CustomStoreCell.swift */; };
 		FE0831491FC636BE00F1591B /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE0831471FC636BE00F1591B /* StoreCell.xib */; };
-		FE08314D1FC67ED700F1591B /* CustomSaleItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE08314B1FC67ED700F1591B /* CustomSaleItemCell.swift */; };
-		FE08314E1FC67ED700F1591B /* SaleItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE08314C1FC67ED700F1591B /* SaleItemCell.xib */; };
 		FE0831581FC7AAC500F1591B /* DetailedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0831571FC7AAC500F1591B /* DetailedItemViewController.swift */; };
+		FE08315C1FC9325500F1591B /* CustomSaleItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE08315A1FC9325500F1591B /* CustomSaleItemCell.swift */; };
+		FE08315D1FC9325500F1591B /* SaleItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE08315B1FC9325500F1591B /* SaleItemCell.xib */; };
 		FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F001FB6A72700B82435 /* ProductDataModel.swift */; };
 		FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F021FB7C99E00B82435 /* StoreDataModel.swift */; };
 		FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F041FB7CF6500B82435 /* SalesViewController.swift */; };
@@ -35,9 +35,9 @@
 		B687967FF5D666CC23C2F58B /* Pods-Liqbo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liqbo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo.debug.xcconfig"; sourceTree = "<group>"; };
 		FE0831461FC636BE00F1591B /* CustomStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStoreCell.swift; sourceTree = "<group>"; };
 		FE0831471FC636BE00F1591B /* StoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
-		FE08314B1FC67ED700F1591B /* CustomSaleItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaleItemCell.swift; sourceTree = "<group>"; };
-		FE08314C1FC67ED700F1591B /* SaleItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaleItemCell.xib; sourceTree = "<group>"; };
 		FE0831571FC7AAC500F1591B /* DetailedItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedItemViewController.swift; sourceTree = "<group>"; };
+		FE08315A1FC9325500F1591B /* CustomSaleItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaleItemCell.swift; sourceTree = "<group>"; };
+		FE08315B1FC9325500F1591B /* SaleItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaleItemCell.xib; sourceTree = "<group>"; };
 		FE094F001FB6A72700B82435 /* ProductDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataModel.swift; sourceTree = "<group>"; };
 		FE094F021FB7C99E00B82435 /* StoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataModel.swift; sourceTree = "<group>"; };
 		FE094F041FB7CF6500B82435 /* SalesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesViewController.swift; sourceTree = "<group>"; };
@@ -94,11 +94,11 @@
 			path = CustomStoreCell;
 			sourceTree = "<group>";
 		};
-		FE08314A1FC67EB700F1591B /* CustomSaleItemCell */ = {
+		FE0831591FC9323800F1591B /* CustomSaleItemCell */ = {
 			isa = PBXGroup;
 			children = (
-				FE08314B1FC67ED700F1591B /* CustomSaleItemCell.swift */,
-				FE08314C1FC67ED700F1591B /* SaleItemCell.xib */,
+				FE08315A1FC9325500F1591B /* CustomSaleItemCell.swift */,
+				FE08315B1FC9325500F1591B /* SaleItemCell.xib */,
 			);
 			path = CustomSaleItemCell;
 			sourceTree = "<group>";
@@ -169,7 +169,7 @@
 		FE4E1D2A1FB668C400700E36 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FE08314A1FC67EB700F1591B /* CustomSaleItemCell */,
+				FE0831591FC9323800F1591B /* CustomSaleItemCell */,
 				FE0831451FC6369C00F1591B /* CustomStoreCell */,
 				FE10F3901FBD00FA00385CF6 /* CustomProductItemCell */,
 				FE4E1D171FB6688B00700E36 /* Main.storyboard */,
@@ -242,7 +242,7 @@
 			files = (
 				FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */,
 				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
-				FE08314E1FC67ED700F1591B /* SaleItemCell.xib in Resources */,
+				FE08315D1FC9325500F1591B /* SaleItemCell.xib in Resources */,
 				FE0831491FC636BE00F1591B /* StoreCell.xib in Resources */,
 				FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */,
 				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
@@ -279,6 +279,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/KWStepper/KWStepper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -286,6 +287,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KWStepper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -316,9 +318,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE08315C1FC9325500F1591B /* CustomSaleItemCell.swift in Sources */,
 				FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */,
 				FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */,
-				FE08314D1FC67ED700F1591B /* CustomSaleItemCell.swift in Sources */,
 				FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */,
 				FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */,
 				FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */,

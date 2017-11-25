@@ -135,9 +135,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 productDataModel.package = saleItem["package"].stringValue
                 productDataModel.total_package_units = saleItem["total_package_units"].intValue
                 productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
-                productDataModel.alcohol_content = saleItem["alcohol_content"].intValue
+                productDataModel.alcohol_content = saleItem["alcohol_content"].floatValue
                 productDataModel.style = saleItem["style"].stringValue
                 productDataModel.description = saleItem["description"].stringValue
+                productDataModel.origin = saleItem["origin"].stringValue
                 
                 if saleItem["image_thumb_url"] != JSON.null{
                     productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!

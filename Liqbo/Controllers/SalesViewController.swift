@@ -16,6 +16,8 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     
     
+    var itemDataToSendToDetailedView : ProductDataModel?
+    
     var LCBO_SALES_URL = "https://lcboapi.com/products?access_key=MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC&where=has_limited_time_offer"
     
     @IBOutlet weak var salesTableView: UITableView!
@@ -24,7 +26,7 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     var numberOfSaleItems = 0
-    var allSaleItems: [SaleItemModel] = []
+    var allSaleItems: [ProductDataModel] = []
     
 
 
@@ -88,23 +90,32 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             for saleItem in saleItems{
                 
-                let saleItemModel = SaleItemModel()
+                let productDataModel = ProductDataModel()
                 
-                saleItemModel.name = saleItem["name"].stringValue
-                saleItemModel.id = saleItem["id"].intValue
-                saleItemModel.price_in_cents = saleItem["price_in_cents"].floatValue
-                saleItemModel.primary_category = saleItem["primary_category"].stringValue
-                saleItemModel.has_limited_time_offer = saleItem["has_limited_time_offer"].boolValue
-                saleItemModel.limited_time_offer_savings_in_cents = saleItem["limited_time_offer_savings_in_cents"].floatValue
-                saleItemModel.limited_time_offer_ends_on = saleItem["limited_time_offer_ends_on"].stringValue
-                saleItemModel.package = saleItem["package"].stringValue
-                saleItemModel.total_package_units = saleItem["total_package_units"].intValue
-                saleItemModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
-                saleItemModel.alcohol_content = saleItem["alcohol_content"].intValue
-                saleItemModel.image_thumb_url = saleItem["image_thumb_url"].url!
-            
+                productDataModel.name = saleItem["name"].stringValue
+                productDataModel.id = saleItem["id"].intValue
+                productDataModel.price_in_cents = saleItem["price_in_cents"].floatValue
+                productDataModel.primary_category = saleItem["primary_category"].stringValue
+                productDataModel.has_limited_time_offer = saleItem["has_limited_time_offer"].boolValue
+                productDataModel.limited_time_offer_savings_in_cents = saleItem["limited_time_offer_savings_in_cents"].floatValue
+                productDataModel.limited_time_offer_ends_on = saleItem["limited_time_offer_ends_on"].stringValue
+                productDataModel.package = saleItem["package"].stringValue
+                productDataModel.total_package_units = saleItem["total_package_units"].intValue
+                productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
+                productDataModel.alcohol_content = saleItem["alcohol_content"].floatValue
+                productDataModel.style = saleItem["style"].stringValue
+                productDataModel.description = saleItem["description"].stringValue
+                productDataModel.origin = saleItem["origin"].stringValue
                 
-                allSaleItems.append(saleItemModel)
+                if saleItem["image_thumb_url"] != JSON.null{
+                    productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!
+                }
+                
+                if saleItem["image_url"] != JSON.null {
+                    productDataModel.image_url = saleItem["image_url"].url!
+                }
+                
+                allSaleItems.append(productDataModel)
 
 
                 
@@ -157,8 +168,18 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "segueSaleItem", sender: self)
+        itemDataToSendToDetailedView = allSaleItems[indexPath.row]
         print("This cell from the chat list was selected: \(indexPath.row)")
+        performSegue(withIdentifier: "segueSaleItem", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueSaleItem" {
+            
+            let secondVC = segue.destination as! DetailedItemViewController
+            secondVC.recivedItemData = itemDataToSendToDetailedView
+            
+        }
     }
     
 

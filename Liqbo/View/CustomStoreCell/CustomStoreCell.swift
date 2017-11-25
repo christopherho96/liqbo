@@ -18,6 +18,18 @@ class CustomStoreCell: UITableViewCell {
     
     @IBOutlet weak var storeDistance: UILabel!
     
+  /*  @IBOutlet weak var itemThumbnail: UIImageView!
+    
+    @IBOutlet weak var itemName: UILabel!
+    
+    @IBOutlet weak var itemPackage: UILabel!
+    
+    @IBOutlet weak var itemPrice: UILabel!
+    
+    @IBOutlet weak var itemSaleUntil: UILabel!
+    
+    @IBOutlet weak var itemSave: UILabel!*/
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

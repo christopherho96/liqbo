@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import KWStepper
+
 
 protocol CanRecieveItemData {
     func dataItemDataRecieved(data: ProductDataModel)
 }
 
-class DetailedItemViewController: UIViewController {
+class DetailedItemViewController: UIViewController, KWStepperDelegate {
 
     var recivedItemData: ProductDataModel?
     
@@ -21,6 +23,42 @@ class DetailedItemViewController: UIViewController {
     @IBOutlet weak var itemStyle: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemPricePerPackage: UILabel!
+    
+    @IBOutlet weak var itemOrigin: UILabel!
+    
+    @IBOutlet weak var itemAlchoholContent: UILabel!
+    @IBOutlet weak var itemIsOnSale: UILabel!
+    
+    
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var decrementButton: UIButton!
+    @IBOutlet weak var incrementButton: UIButton!
+    @IBOutlet weak var addToCartButton: UIButton!
+    
+    var currentCount = 0;
+    
+    
+    @IBAction func addToCartButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func decrementCount(_ sender: Any) {
+        
+        if currentCount > 0 {
+            currentCount = currentCount - 1
+        }
+        
+        countLabel.text = String(currentCount)
+    }
+    
+    @IBAction func incrementCount(_ sender: Any) {
+        
+        if currentCount < 20 {
+            currentCount = currentCount + 1
+        }
+        
+        countLabel.text = String(currentCount)
+        
+    }
     
     
     
@@ -31,14 +69,21 @@ class DetailedItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         itemImage.af_setImage(withURL: recivedItemData!.image_url)
         itemImage.clipsToBounds = true
         itemName.text = recivedItemData!.name
         itemStyle.text = recivedItemData!.style
-    
-     
-
+        itemOrigin.text = "Origin: \(recivedItemData!.origin)"
+        itemAlchoholContent.text = "Alcohol Content: \(String(format:"%.1f", recivedItemData!.alcohol_content / 100))%"
+        
+        let onSale = recivedItemData!.has_limited_time_offer
+        
+        if onSale == true{
+            itemIsOnSale.text = "Promotion: Save $\(String(format: "%.2f", recivedItemData!.limited_time_offer_savings_in_cents/100)) until \(recivedItemData!.limited_time_offer_ends_on)"
+        }
+        else{
+            itemIsOnSale.text = "Promotion: Not Available"
+        }
         
         let price = convertPriceFromCentsToDollars(price: recivedItemData!.price_in_cents)
         
@@ -51,7 +96,15 @@ class DetailedItemViewController: UIViewController {
         
         itemPricePerPackage.attributedText = amountText
         
-        // Do any additional setup after loading the view.
+        decrementButton.layer.masksToBounds = true
+        decrementButton.layer.cornerRadius = decrementButton.frame.width/2
+        
+        incrementButton.layer.masksToBounds = true
+        incrementButton.layer.cornerRadius = decrementButton.frame.width/2
+        
+        addToCartButton.layer.cornerRadius = addToCartButton.frame.height/2
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,21 +112,10 @@ class DetailedItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func convertPriceFromCentsToDollars(price: Float) -> String{
         let priceInDollars = price/100
         return String(format: "%.2f", priceInDollars)
     }
-
-    //cell.productPrice.text = "Price: " + String(format: "%.2f", arrayOfSearchItems[indexPath.row].price_in_cents / 100)
+    
 }

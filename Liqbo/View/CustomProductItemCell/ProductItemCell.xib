@@ -20,22 +20,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AMc-HE-a3r">
-                        <rect key="frame" x="16" y="11" width="44" height="54.5"/>
+                        <rect key="frame" x="16" y="11" width="44" height="58"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="bRH-Yv-Mj9"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-dD-Hai">
-                        <rect key="frame" x="68" y="11" width="291" height="15.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-dD-Hai">
+                        <rect key="frame" x="68" y="11" width="291" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Package" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as1-fY-m8N">
-                        <rect key="frame" x="68" y="26.5" width="291" height="21"/>
+                        <rect key="frame" x="68" y="33" width="291" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDB-4m-KEy">
-                        <rect key="frame" x="68" y="44.5" width="291" height="21"/>
+                        <rect key="frame" x="68" y="52" width="291" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,22 +46,20 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="as1-fY-m8N" firstAttribute="top" secondItem="4Yb-dD-Hai" secondAttribute="bottom" id="08E-5e-Mss"/>
-                    <constraint firstItem="as1-fY-m8N" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="95O-5Q-Ai9"/>
-                    <constraint firstItem="WDB-4m-KEy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JZy-Gd-XNs"/>
-                    <constraint firstItem="as1-fY-m8N" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="N3G-dR-D1i"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="4Yb-dD-Hai" secondAttribute="bottom" constant="42.5" id="PqG-CE-56i"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="299" id="Reg-sU-e3l"/>
-                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="WWI-Ls-SJb"/>
-                    <constraint firstItem="WDB-4m-KEy" firstAttribute="top" secondItem="4Yb-dD-Hai" secondAttribute="bottom" constant="18" id="Ydt-5X-vfC"/>
-                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="cQB-NX-QAj"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="AMc-HE-a3r" secondAttribute="bottom" constant="3.5" id="iDE-Mc-kHa"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="WDB-4m-KEy" secondAttribute="bottom" constant="3.5" id="ib9-6M-V1G"/>
-                    <constraint firstItem="WDB-4m-KEy" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="nEj-0W-s8w"/>
-                    <constraint firstItem="AMc-HE-a3r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="sX9-d6-o97"/>
-                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="vFM-RK-doT"/>
-                    <constraint firstItem="AMc-HE-a3r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vpN-CM-HuF"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="as1-fY-m8N" secondAttribute="bottom" constant="21.5" id="yZR-XP-cFT"/>
+                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="4qE-De-z95"/>
+                    <constraint firstItem="WDB-4m-KEy" firstAttribute="top" secondItem="as1-fY-m8N" secondAttribute="bottom" constant="2" id="917-bu-nZP"/>
+                    <constraint firstItem="WDB-4m-KEy" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="ArX-R8-yXb"/>
+                    <constraint firstItem="as1-fY-m8N" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="QGR-lh-bfr"/>
+                    <constraint firstItem="AMc-HE-a3r" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="Rfx-XP-sLi"/>
+                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="S9w-zf-DAT"/>
+                    <constraint firstItem="AMc-HE-a3r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="SXo-iP-kyY"/>
+                    <constraint firstItem="as1-fY-m8N" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="TKf-sF-d8t"/>
+                    <constraint firstItem="AMc-HE-a3r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="YT8-J7-CAQ"/>
+                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gEC-6C-yoy"/>
+                    <constraint firstItem="4Yb-dD-Hai" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="gyX-fh-9pz"/>
+                    <constraint firstItem="WDB-4m-KEy" firstAttribute="leading" secondItem="AMc-HE-a3r" secondAttribute="trailing" constant="8" id="kps-bU-eWk"/>
+                    <constraint firstItem="WDB-4m-KEy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="qxY-rF-pCD"/>
+                    <constraint firstItem="WDB-4m-KEy" firstAttribute="top" secondItem="as1-fY-m8N" secondAttribute="bottom" constant="2" id="yqK-k4-U8r"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
