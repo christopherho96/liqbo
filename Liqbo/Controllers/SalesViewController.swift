@@ -57,7 +57,6 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /***************************************************************/
     
     func getSalesData (url: String){
-        
         SVProgressHUD.show()
         //making http request with alamofire
         
@@ -121,10 +120,11 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
             }
             self.salesTableView.reloadData()
-            SVProgressHUD.dismiss()
         }else{
             print("error parsing the json stuff")
         }
+        
+        SVProgressHUD.dismiss()
     }
     
     //update UI here

@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import KWStepper
-
 
 protocol CanRecieveItemData {
     func dataItemDataRecieved(data: ProductDataModel)
 }
 
-class DetailedItemViewController: UIViewController, KWStepperDelegate {
+class DetailedItemViewController: UIViewController {
 
     var recivedItemData: ProductDataModel?
     
@@ -35,7 +33,9 @@ class DetailedItemViewController: UIViewController, KWStepperDelegate {
     @IBOutlet weak var incrementButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
     
-    var currentCount = 0;
+    var currentCount = 1;
+    
+    var currentTotalPrice: Float = 0
     
     
     @IBAction func addToCartButtonPressed(_ sender: Any) {
@@ -60,32 +60,69 @@ class DetailedItemViewController: UIViewController, KWStepperDelegate {
         
     }
     
-    
-    
     @IBAction func dismissDetailedViewTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addToCartButtonTapped(_ sender: Any) {
+    
+        currentTotalPrice = (recivedItemData!.price_in_cents)/100 * Float(currentCount)
+        
+        if currentCount != 0{
+        
+            let alert = UIAlertController(title: "Added to Cart", message: "\(currentCount) \(recivedItemData!.name) with a total cost of $\(String(format:"%.2f",currentTotalPrice)) has been added.", preferredStyle: .alert)
+            
+            let continueShopping = UIAlertAction(title: "Continue Shopping" , style: .default, handler: { (UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            
+            let goToCart =  UIAlertAction(title: "Go To Cart" , style: .default, handler: { (UIAlertAction) in
+                
+            })
+            
+            alert.addAction(continueShopping)
+            alert.addAction(goToCart)
+            present(alert, animated: true, completion: nil)
+
+        }
+        
+        else{
+            let alert = UIAlertController(title: "Whoops!", message: "You have 0 items selected", preferredStyle: .alert)
+            
+            let dismiss = UIAlertAction(title: "OK" , style: .default, handler: { (UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            
+            alert.addAction(dismiss)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         itemImage.af_setImage(withURL: recivedItemData!.image_url)
         itemImage.clipsToBounds = true
+        
+        
         itemName.text = recivedItemData!.name
-        itemStyle.text = recivedItemData!.style
-        itemOrigin.text = "Origin: \(recivedItemData!.origin)"
-        itemAlchoholContent.text = "Alcohol Content: \(String(format:"%.1f", recivedItemData!.alcohol_content / 100))%"
+        //itemStyle.text = recivedItemData!.style
+        itemOrigin.text = "\(recivedItemData!.origin)"
+        itemAlchoholContent.text = "\(String(format:"%.1f", recivedItemData!.alcohol_content / 100))% Alcohol Content"
         
         let onSale = recivedItemData!.has_limited_time_offer
         
         if onSale == true{
-            itemIsOnSale.text = "Promotion: Save $\(String(format: "%.2f", recivedItemData!.limited_time_offer_savings_in_cents/100)) until \(recivedItemData!.limited_time_offer_ends_on)"
+            itemIsOnSale.text = "Save $\(String(format: "%.2f", recivedItemData!.limited_time_offer_savings_in_cents/100)) until \(recivedItemData!.limited_time_offer_ends_on)"
         }
         else{
-            itemIsOnSale.text = "Promotion: Not Available"
+            itemIsOnSale.text = "Currently not on sale"
         }
         
-        let price = convertPriceFromCentsToDollars(price: recivedItemData!.price_in_cents)
+       let price = convertPriceFromCentsToDollars(price: recivedItemData!.price_in_cents)
         
         let combinedString = "$" + price + "/" + recivedItemData!.package
         let amountText = NSMutableAttributedString.init(string: combinedString)
@@ -96,14 +133,20 @@ class DetailedItemViewController: UIViewController, KWStepperDelegate {
         
         itemPricePerPackage.attributedText = amountText
         
+        
         decrementButton.layer.masksToBounds = true
         decrementButton.layer.cornerRadius = decrementButton.frame.width/2
+        decrementButton.layer.borderColor = UIColor.white.cgColor
+        decrementButton.layer.borderWidth = 2
         
         incrementButton.layer.masksToBounds = true
         incrementButton.layer.cornerRadius = decrementButton.frame.width/2
+        incrementButton.layer.borderColor = UIColor.white.cgColor
+        incrementButton.layer.borderWidth = 2
         
         addToCartButton.layer.cornerRadius = addToCartButton.frame.height/2
-
+        
+ 
         
     }
 

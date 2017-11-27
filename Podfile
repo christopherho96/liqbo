@@ -11,6 +11,5 @@ target 'Liqbo' do
     pod 'AlamofireImage'
     pod 'SwiftyJSON'
     pod 'SVProgressHUD'
-    pod 'KWStepper'
 
 end

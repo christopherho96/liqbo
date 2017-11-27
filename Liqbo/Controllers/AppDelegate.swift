@@ -18,19 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-       let color = UIColor(hex: "55AAE5")
+        let color = UIColor(hex: "55AAE5")
         
         UITabBar.appearance().tintColor = color
-      /*  UINavigationBar.appearance().barTintColor = color
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        UINavigationBar.appearance().barStyle = .blackOpaque
         
-        //removes 1px line from bottom of navigation tab bar
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-    */
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = color
         
-    
+      
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().barTintColor = color
+        UIApplication.shared.statusBarStyle = .default
+
+        statusBar.tintColor = UIColor.white
         
         return true
     }

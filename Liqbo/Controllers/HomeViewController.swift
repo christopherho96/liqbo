@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -67,6 +68,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     /***************************************************************/
     
     func getProductData (url: String, parameters: [String: String]){
+        
+        SVProgressHUD.show()
         
         //making http request with alamofire
         
@@ -158,6 +161,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         }else{
             print("error parsing the json stuff")
         }
+        
+        SVProgressHUD.dismiss()
     }
     
     //update UI
