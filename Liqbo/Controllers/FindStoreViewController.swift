@@ -14,6 +14,8 @@ import SVProgressHUD
 
 class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource  {
     
+    var itemDataToSendToDetailedView : StoreDateModel?
+    
     var arrayOfSearchStores: [StoreDateModel] = []
     
     @IBOutlet weak var storeTableView: UITableView!
@@ -162,6 +164,8 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
                 storeDataModel.openingHours = convertMinutesToTime(timeInMintues: store[openingHours].floatValue)
                 storeDataModel.closingHours = convertMinutesToTime(timeInMintues: store[closingHours].floatValue)
                 storeDataModel.distance_in_meters = store["distance_in_meters"].floatValue
+                storeDataModel.latitude = store["latitude"].floatValue
+                storeDataModel.longitude = store["longitude"].floatValue
                 
                 arrayOfSearchStores.append(storeDataModel)
                 
@@ -187,9 +191,32 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         cell.storeAddress.text = arrayOfSearchStores[indexPath.row].address_line_1
         cell.storeCity.text = arrayOfSearchStores[indexPath.row].city
         cell.storeHours.text = "\(arrayOfSearchStores[indexPath.row].openingHours)AM to \(arrayOfSearchStores[indexPath.row].closingHours)PM"
-        cell.storeDistance.text = String(format: "%.1f", arrayOfSearchStores[indexPath.row].distance_in_meters / 1000) + " km"
+        
+        if currentSearchState == false{
+            cell.storeDistance.text = String(format: "%.1f", arrayOfSearchStores[indexPath.row].distance_in_meters / 1000) + " km"
+            cell.storeDistance.isHidden = false
+        }
+        else{
+            cell.storeDistance.isHidden = true
+        }
+        
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        itemDataToSendToDetailedView = arrayOfSearchStores[indexPath.row]
+        print("This cell from the chat list was selected: \(indexPath.row)")
+        performSegue(withIdentifier: "segueToDetailedStoreView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToDetailedStoreView" {
+            
+            let secondVC = segue.destination as! DetailedStoreViewController
+            secondVC.recievedItemData = itemDataToSendToDetailedView
+            
+        }
     }
     
     func setOpenAndCloseHoursToday(){

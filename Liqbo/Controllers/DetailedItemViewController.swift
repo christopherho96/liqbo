@@ -126,7 +126,7 @@ class DetailedItemViewController: UIViewController {
         let amountText = NSMutableAttributedString.init(string: combinedString)
         let numberOfCharInPrice = price.count + 1
         
-        amountText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 40),
+        amountText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 48),
                                   NSAttributedStringKey.foregroundColor: UIColor.black],  range: NSMakeRange(0, numberOfCharInPrice ))
         
         itemPricePerPackage.attributedText = amountText
