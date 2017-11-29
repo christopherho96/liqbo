@@ -38,9 +38,6 @@ class DetailedItemViewController: UIViewController {
     var currentTotalPrice: Float = 0
     
     
-    @IBAction func addToCartButtonPressed(_ sender: Any) {
-    }
-    
     @IBAction func decrementCount(_ sender: Any) {
         
         if currentCount > 0 {
@@ -109,9 +106,10 @@ class DetailedItemViewController: UIViewController {
         
         
         itemName.text = recivedItemData!.name
+        print(itemName.text!)
         //itemStyle.text = recivedItemData!.style
         itemOrigin.text = "\(recivedItemData!.origin)"
-        itemAlchoholContent.text = "\(String(format:"%.1f", recivedItemData!.alcohol_content / 100))% Alcohol Content"
+        itemAlchoholContent.text = "\(String(format:"%.1f", recivedItemData!.alcohol_content / 100))%"
         
         let onSale = recivedItemData!.has_limited_time_offer
         
@@ -119,7 +117,7 @@ class DetailedItemViewController: UIViewController {
             itemIsOnSale.text = "Save $\(String(format: "%.2f", recivedItemData!.limited_time_offer_savings_in_cents/100)) until \(recivedItemData!.limited_time_offer_ends_on)"
         }
         else{
-            itemIsOnSale.text = "Currently not on sale"
+            itemIsOnSale.text = "Currently no promotion"
         }
         
        let price = convertPriceFromCentsToDollars(price: recivedItemData!.price_in_cents)
@@ -128,7 +126,7 @@ class DetailedItemViewController: UIViewController {
         let amountText = NSMutableAttributedString.init(string: combinedString)
         let numberOfCharInPrice = price.count + 1
         
-        amountText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 50),
+        amountText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 40),
                                   NSAttributedStringKey.foregroundColor: UIColor.black],  range: NSMakeRange(0, numberOfCharInPrice ))
         
         itemPricePerPackage.attributedText = amountText
@@ -145,7 +143,8 @@ class DetailedItemViewController: UIViewController {
         incrementButton.layer.borderWidth = 2
         
         addToCartButton.layer.cornerRadius = addToCartButton.frame.height/2
-        
+        addToCartButton.layer.borderColor = UIColor.white.cgColor
+        addToCartButton.layer.borderWidth = 2
  
         
     }

@@ -17,6 +17,7 @@
 		FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F021FB7C99E00B82435 /* StoreDataModel.swift */; };
 		FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F041FB7CF6500B82435 /* SalesViewController.swift */; };
 		FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */; };
+		FE0DF4601FCC7D87002288C2 /* DetailedStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0DF45F1FCC7D87002288C2 /* DetailedStoreViewController.swift */; };
 		FE10F3931FBD011800385CF6 /* CustomProductItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10F3911FBD011800385CF6 /* CustomProductItemCell.swift */; };
 		FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE10F3921FBD011800385CF6 /* ProductItemCell.xib */; };
 		FE10F3961FBD100000385CF6 /* FindStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10F3951FBD100000385CF6 /* FindStoreViewController.swift */; };
@@ -42,6 +43,7 @@
 		FE094F021FB7C99E00B82435 /* StoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataModel.swift; sourceTree = "<group>"; };
 		FE094F041FB7CF6500B82435 /* SalesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesViewController.swift; sourceTree = "<group>"; };
 		FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemModel.swift; sourceTree = "<group>"; };
+		FE0DF45F1FCC7D87002288C2 /* DetailedStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedStoreViewController.swift; sourceTree = "<group>"; };
 		FE10F3911FBD011800385CF6 /* CustomProductItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProductItemCell.swift; sourceTree = "<group>"; };
 		FE10F3921FBD011800385CF6 /* ProductItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
 		FE10F3951FBD100000385CF6 /* FindStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindStoreViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				FE10F3951FBD100000385CF6 /* FindStoreViewController.swift */,
 				FE10F3971FBD101200385CF6 /* CartViewController.swift */,
 				FE0831571FC7AAC500F1591B /* DetailedItemViewController.swift */,
+				FE0DF45F1FCC7D87002288C2 /* DetailedStoreViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */,
 				FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */,
 				FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */,
+				FE0DF4601FCC7D87002288C2 /* DetailedStoreViewController.swift in Sources */,
 				FE0831581FC7AAC500F1591B /* DetailedItemViewController.swift in Sources */,
 				FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */,
 				FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */,

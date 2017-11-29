@@ -22,35 +22,17 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var userSearchText: String = ""
     
     var itemDataToSendToDetailedView : ProductDataModel?
-    
-    
 
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
-    
-    
-    
-    
     @IBOutlet weak var searchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         
         searchBar.delegate = self
-        searchTableView.tableHeaderView = searchBar
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTableView.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "customProductItemCell")
-        
-        
-        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        //view.addGestureRecognizer(tap)
-        
-        //self.navigationController!.navigationBar.isTranslucent = false
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +53,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         
         SVProgressHUD.show()
         
+        searchTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         //making http request with alamofire
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
@@ -122,33 +105,33 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
 
     func updateSearchItemsData(json: JSON){
         
-        if let saleItems = json["result"].array {
+        if let productItems = json["result"].array {
             
-            for saleItem in saleItems{
+            for productItem in productItems{
                 
                 let productDataModel = ProductDataModel()
                 
-                productDataModel.name = saleItem["name"].stringValue
-                productDataModel.id = saleItem["id"].intValue
-                productDataModel.price_in_cents = saleItem["price_in_cents"].floatValue
-                productDataModel.primary_category = saleItem["primary_category"].stringValue
-                productDataModel.has_limited_time_offer = saleItem["has_limited_time_offer"].boolValue
-                productDataModel.limited_time_offer_savings_in_cents = saleItem["limited_time_offer_savings_in_cents"].floatValue
-                productDataModel.limited_time_offer_ends_on = saleItem["limited_time_offer_ends_on"].stringValue
-                productDataModel.package = saleItem["package"].stringValue
-                productDataModel.total_package_units = saleItem["total_package_units"].intValue
-                productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
-                productDataModel.alcohol_content = saleItem["alcohol_content"].floatValue
-                productDataModel.style = saleItem["style"].stringValue
-                productDataModel.description = saleItem["description"].stringValue
-                productDataModel.origin = saleItem["origin"].stringValue
+                productDataModel.name = productItem["name"].stringValue
+                productDataModel.id = productItem["id"].intValue
+                productDataModel.price_in_cents = productItem["price_in_cents"].floatValue
+                productDataModel.primary_category = productItem["primary_category"].stringValue
+                productDataModel.has_limited_time_offer = productItem["has_limited_time_offer"].boolValue
+                productDataModel.limited_time_offer_savings_in_cents = productItem["limited_time_offer_savings_in_cents"].floatValue
+                productDataModel.limited_time_offer_ends_on = productItem["limited_time_offer_ends_on"].stringValue
+                productDataModel.package = productItem["package"].stringValue
+                productDataModel.total_package_units = productItem["total_package_units"].intValue
+                productDataModel.volume_in_milliliters = productItem["volume_in_milliliters"].intValue
+                productDataModel.alcohol_content = productItem["alcohol_content"].floatValue
+                productDataModel.style = productItem["style"].stringValue
+                productDataModel.description = productItem["description"].stringValue
+                productDataModel.origin = productItem["origin"].stringValue
                 
-                if saleItem["image_thumb_url"] != JSON.null{
-                    productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!
+                if productItem["image_thumb_url"] != JSON.null{
+                    productDataModel.image_thumb_url = productItem["image_thumb_url"].url!
                 }
                 
-                if saleItem["image_url"] != JSON.null {
-                    productDataModel.image_url = saleItem["image_url"].url!
+                if productItem["image_url"] != JSON.null {
+                    productDataModel.image_url = productItem["image_url"].url!
                 }
 
                 
@@ -215,10 +198,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             
         }
     }
-    
-
 }
-
 
 //extension to help use HEX value colors in UIColor("ff00000")
 extension UIColor {

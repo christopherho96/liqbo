@@ -33,19 +33,14 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        getSalesData(url: LCBO_SALES_URL)
-        // Do any additional setup after loading the view.
 
         salesTableView.delegate = self
         salesTableView.dataSource = self
         salesTableView.register(UINib(nibName: "SaleItemCell", bundle: nil), forCellReuseIdentifier: "customSaleItemCell")
         salesTableView.separatorStyle = .singleLine
         
+                getSalesData(url: LCBO_SALES_URL)
         
-    
-        //removes 1px line from bottom of navigation tab bar
-        self.navigationController!.navigationBar.isTranslucent = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,11 +108,7 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if saleItem["image_url"] != JSON.null {
                     productDataModel.image_url = saleItem["image_url"].url!
                 }
-                
                 allSaleItems.append(productDataModel)
-
-
-                
             }
             self.salesTableView.reloadData()
         }else{
@@ -139,18 +130,11 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.itemName.text = allSaleItems[indexPath.row].name
 
-        
         cell.itemPackage.text = allSaleItems[indexPath.row].package
 
-        
         cell.itemPrice.text = "Price: " + String(format: "%.2f", allSaleItems[indexPath.row].price_in_cents / 100)
-
-       
         
         cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
-
-    
-        
         
         cell.itemSave.applyDesign()
         cell.itemSave.text =  "-" + String(format: "%.2f", allSaleItems[indexPath.row].limited_time_offer_savings_in_cents / 100)
@@ -181,8 +165,6 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         }
     }
-    
-
 }
 
 extension UILabel{
