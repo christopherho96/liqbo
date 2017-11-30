@@ -30,6 +30,13 @@ class DetailedStoreViewController: UIViewController, MKMapViewDelegate, CLLocati
     @IBOutlet weak var storeCity: UILabel!
     @IBOutlet weak var showInMapsButton: UIButton!
     @IBAction func showInMapsButtonPressed(_ sender: Any) {
+        
+        let location = CLLocationCoordinate2DMake(CLLocationDegrees(recievedItemData!.latitude), CLLocationDegrees(recievedItemData!.longitude))
+        let placemark = MKPlacemark(coordinate: location)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = recievedItemData!.address_line_1
+        mapItem.openInMaps(launchOptions: nil)
+        
     }
     
     @IBAction func dismissButton(_ sender: Any) {
@@ -59,8 +66,17 @@ class DetailedStoreViewController: UIViewController, MKMapViewDelegate, CLLocati
         annotation.subtitle = recievedItemData!.address_line_1
         Map.addAnnotation(annotation)
         
+        
         storeAddress.text = recievedItemData!.address_line_1
         storeCity.text = recievedItemData!.city
+        
+        sundayHours.text = "Sun: " + recievedItemData!.sundayHours
+        mondayHours.text = "Mon: " + recievedItemData!.mondayHours
+        tuesdayHours.text = "Tue: " +  recievedItemData!.tuesdayHours
+        wednesdayHours.text = "Wed: " +  recievedItemData!.wednesdayHours
+        thursdayHours.text = "Thu: " +  recievedItemData!.thursdayHours
+        fridayHours.text = "Fri: " +  recievedItemData!.fridayHours
+        saturdayHours.text = "Sat: " +  recievedItemData!.saturdayHours
     }
 
     override func didReceiveMemoryWarning() {

@@ -20,19 +20,11 @@ class StoreDateModel{
     var openingHours = ""
     var closingHours = "" 
     
-    var sunday_open: Float = 0
-    var sunday_close: Float = 0
-    var monday_open: Float = 0
-    var monday_close: Float = 0
-    var tuesday_open: Float = 0
-    var tuesday_close: Float = 0
-    var wednesday_open: Float = 0
-    var wednesday_close: Float = 0
-    var thursday_open: Float = 0
-    var thursday_close: Float = 0
-    var friday_open: Float = 0
-    var friday_close: Float = 0
-    var saturday_open: Float = 0
-    var saturday_close: Float = 0
-    
+    var sundayHours = ""
+    var mondayHours = ""
+    var tuesdayHours = ""
+    var wednesdayHours = ""
+    var thursdayHours = ""
+    var fridayHours = ""
+    var saturdayHours = ""
 }

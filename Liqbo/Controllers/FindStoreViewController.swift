@@ -167,6 +167,14 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
                 storeDataModel.latitude = store["latitude"].floatValue
                 storeDataModel.longitude = store["longitude"].floatValue
                 
+                storeDataModel.sundayHours =  convertTimeToString(openTime: store["sunday_open"].floatValue, closeTime: store["sunday_close"].floatValue)
+                storeDataModel.mondayHours =  convertTimeToString(openTime: store["monday_open"].floatValue, closeTime: store["monday_close"].floatValue)
+                storeDataModel.tuesdayHours =  convertTimeToString(openTime: store["tuesday_open"].floatValue, closeTime: store["tuesday_close"].floatValue)
+                storeDataModel.wednesdayHours =  convertTimeToString(openTime: store["wednesday_open"].floatValue, closeTime: store["wednesday_close"].floatValue)
+                storeDataModel.thursdayHours =  convertTimeToString(openTime: store["thursday_open"].floatValue, closeTime: store["thursday_close"].floatValue)
+                storeDataModel.fridayHours =  convertTimeToString(openTime: store["friday_open"].floatValue, closeTime: store["friday_close"].floatValue)
+                storeDataModel.saturdayHours =  convertTimeToString(openTime: store["saturday_open"].floatValue, closeTime: store["saturday_close"].floatValue)
+                
                 arrayOfSearchStores.append(storeDataModel)
                 
             }
@@ -205,6 +213,7 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                print (arrayOfSearchStores[indexPath.row].sundayHours)
         itemDataToSendToDetailedView = arrayOfSearchStores[indexPath.row]
         print("This cell from the chat list was selected: \(indexPath.row)")
         performSegue(withIdentifier: "segueToDetailedStoreView", sender: self)
@@ -275,7 +284,6 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
     
     func convertMinutesToTime(timeInMintues: Float) -> String {
         
-        
         var convHour = timeInMintues/60
         var hourValue = Int(convHour / 1)
         
@@ -291,6 +299,28 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
         }
         
         return "\(hourValue):\(Int(minValue))"
+    }
+    
+    func convertTimeToString(openTime: Float, closeTime: Float) -> String {
+        
+        if openTime == 0{
+            return "Closed"
+        }
+        
+        else{
+           let openTimeString = convertMinutesToTime(timeInMintues: openTime)
+            let closeTimeString = convertMinutesToTime(timeInMintues: closeTime)
+            
+            var timeinStringFormat = openTimeString + "AM to " + closeTimeString + "PM"
+            
+            //accounting for the case when lcbo opens at excactly 12pm noon
+            if openTimeString == "12:00"{
+                timeinStringFormat = openTimeString + "PM to " + closeTimeString + "PM"
+            }
+            
+            return timeinStringFormat
+        }
+
     }
     
     func changeButtonProperties(currentState: Bool){
