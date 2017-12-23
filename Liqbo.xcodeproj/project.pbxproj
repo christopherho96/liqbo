@@ -22,12 +22,15 @@
 		FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE10F3921FBD011800385CF6 /* ProductItemCell.xib */; };
 		FE10F3961FBD100000385CF6 /* FindStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10F3951FBD100000385CF6 /* FindStoreViewController.swift */; };
 		FE10F3981FBD101200385CF6 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10F3971FBD101200385CF6 /* CartViewController.swift */; };
+		FE3B5B0F1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B5B0D1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift */; };
+		FE3B5B101FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE3B5B0E1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib */; };
 		FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D131FB6688A00700E36 /* AppDelegate.swift */; };
 		FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D151FB6688B00700E36 /* HomeViewController.swift */; };
 		FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D171FB6688B00700E36 /* Main.storyboard */; };
 		FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */; };
 		FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */; };
 		FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */; };
+		FEE0B6521FECC353003B13E8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,8 @@
 		FE10F3921FBD011800385CF6 /* ProductItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
 		FE10F3951FBD100000385CF6 /* FindStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindStoreViewController.swift; sourceTree = "<group>"; };
 		FE10F3971FBD101200385CF6 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		FE3B5B0D1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShoppingCartItemCell.swift; sourceTree = "<group>"; };
+		FE3B5B0E1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomShoppingCartItemCell.xib; sourceTree = "<group>"; };
 		FE4E1D101FB6688A00700E36 /* Liqbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liqbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE4E1D131FB6688A00700E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE4E1D151FB6688B00700E36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +61,7 @@
 		FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE4E1D201FB6688B00700E36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE4E1D221FB6688B00700E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,15 @@
 			path = CustomProductItemCell;
 			sourceTree = "<group>";
 		};
+		FE3B5B0C1FE4ED6200972AA0 /* CustomShoppingCartItem */ = {
+			isa = PBXGroup;
+			children = (
+				FE3B5B0D1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift */,
+				FE3B5B0E1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib */,
+			);
+			path = CustomShoppingCartItem;
+			sourceTree = "<group>";
+		};
 		FE4E1D071FB6688A00700E36 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +180,7 @@
 				FE10F3971FBD101200385CF6 /* CartViewController.swift */,
 				FE0831571FC7AAC500F1591B /* DetailedItemViewController.swift */,
 				FE0DF45F1FCC7D87002288C2 /* DetailedStoreViewController.swift */,
+				FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +188,7 @@
 		FE4E1D2A1FB668C400700E36 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE3B5B0C1FE4ED6200972AA0 /* CustomShoppingCartItem */,
 				FE0831591FC9323800F1591B /* CustomSaleItemCell */,
 				FE0831451FC6369C00F1591B /* CustomStoreCell */,
 				FE10F3901FBD00FA00385CF6 /* CustomProductItemCell */,
@@ -247,6 +264,7 @@
 				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
 				FE08315D1FC9325500F1591B /* SaleItemCell.xib in Resources */,
 				FE0831491FC636BE00F1591B /* StoreCell.xib in Resources */,
+				FE3B5B101FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib in Resources */,
 				FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */,
 				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
 			);
@@ -326,9 +344,11 @@
 				FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */,
 				FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */,
 				FE0DF4601FCC7D87002288C2 /* DetailedStoreViewController.swift in Sources */,
+				FE3B5B0F1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift in Sources */,
 				FE0831581FC7AAC500F1591B /* DetailedItemViewController.swift in Sources */,
 				FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */,
 				FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */,
+				FEE0B6521FECC353003B13E8 /* OnboardingViewController.swift in Sources */,
 				FE10F3931FBD011800385CF6 /* CustomProductItemCell.swift in Sources */,
 				FE10F3981FBD101200385CF6 /* CartViewController.swift in Sources */,
 				FE10F3961FBD100000385CF6 /* FindStoreViewController.swift in Sources */,

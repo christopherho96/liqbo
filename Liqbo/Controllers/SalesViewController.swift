@@ -36,6 +36,8 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         salesTableView.delegate = self
         salesTableView.dataSource = self
+        salesTableView.estimatedRowHeight = salesTableView.rowHeight
+        salesTableView.rowHeight = UITableViewAutomaticDimension
         salesTableView.register(UINib(nibName: "SaleItemCell", bundle: nil), forCellReuseIdentifier: "customSaleItemCell")
         salesTableView.separatorStyle = .singleLine
         

@@ -9,12 +9,17 @@
 import UIKit
 import CoreData
 
+enum Storyboard: String {
+    case Main = "Main"
+    case Onboarding = "Onboarding"
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -22,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().tintColor = color
         
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        statusBar.backgroundColor = color
+        //let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+       // statusBar.backgroundColor = color
         
       
         
@@ -31,14 +36,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = color
         UIApplication.shared.statusBarStyle = .default
 
-        statusBar.tintColor = UIColor.white
+        //statusBar.tintColor = UIColor.white
+        
+         //remember to change the firstTime key value when publishing
+        let defaults = UserDefaults.standard.object(forKey: "firstTime")
+        if defaults != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //Write your storyboard name
+            let viewController = storyboard.instantiateViewController(withIdentifier: "homescreen") as! UITabBarController
+            self.window?.rootViewController = viewController
+            self.window?.makeKeyAndVisible()
+            print("is not nil")
+        }
         
         return true
+        
+     
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

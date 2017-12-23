@@ -48,7 +48,7 @@ class DetailedStoreViewController: UIViewController, MKMapViewDelegate, CLLocati
 
         Map.delegate = self
         
-        showInMapsButton.layer.cornerRadius = showInMapsButton.frame.height/2
+        showInMapsButton.layer.cornerRadius = 5
         
         let location = CLLocationCoordinate2DMake(CLLocationDegrees(recievedItemData!.latitude), CLLocationDegrees(recievedItemData!.longitude))
         

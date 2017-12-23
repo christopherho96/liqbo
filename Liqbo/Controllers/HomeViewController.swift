@@ -32,7 +32,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         searchBar.delegate = self
         searchTableView.delegate = self
         searchTableView.dataSource = self
-        searchTableView.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "customProductItemCell")
+        searchTableView.estimatedRowHeight = searchTableView.rowHeight
+        searchTableView.rowHeight = UITableViewAutomaticDimension
+        searchTableView.register(UINib(nibName: "SaleItemCell", bundle: nil), forCellReuseIdentifier: "customSaleItemCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,11 +136,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                     productDataModel.image_url = productItem["image_url"].url!
                 }
 
-                
-                
                 //there may be an error here since it might unwrap a nil
                 arrayOfSearchItems.append(productDataModel)
-                
             }
             self.searchTableView.reloadData()
         }else{
@@ -156,31 +155,42 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-      let cell = tableView.dequeueReusableCell(withIdentifier: "customProductItemCell", for: indexPath) as! CustomProductItemCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "customSaleItemCell", for: indexPath) as! CustomSaleItemCell
         
-        cell.productName.text = arrayOfSearchItems[indexPath.row].name
-        cell.productName.sizeToFit()
+        cell.itemName.text = arrayOfSearchItems[indexPath.row].name
         
-        cell.productPackage.text = arrayOfSearchItems[indexPath.row].package
-        cell.productPackage.textColor = UIColor.lightGray
-        cell.productPackage.sizeToFit()
-        
-        cell.productPrice.text = "Price: " + String(format: "%.2f", arrayOfSearchItems[indexPath.row].price_in_cents / 100)
-        cell.productPrice.textColor = UIColor.lightGray
-        cell.productPrice.sizeToFit()
-        
-        cell.productImage.af_setImage(withURL: arrayOfSearchItems[indexPath.row].image_thumb_url)
-        cell.productImage.clipsToBounds = true
-        cell.productImage.layer.cornerRadius = 8;
+        cell.itemPackage.text = arrayOfSearchItems[indexPath.row].package
+        cell.itemPackage.textColor = UIColor.lightGray
 
+        
+        cell.itemPrice.text = "Price: " + String(format: "%.2f", arrayOfSearchItems[indexPath.row].price_in_cents / 100)
+        cell.itemPrice.textColor = UIColor.lightGray
+        cell.itemPrice.sizeToFit()
+        
+        cell.itemThumbnail.af_setImage(withURL: arrayOfSearchItems[indexPath.row].image_thumb_url)
+        cell.itemThumbnail.clipsToBounds = true
+        cell.itemThumbnail.layer.cornerRadius = 8;
+        
+        let onSale = arrayOfSearchItems[indexPath.row].has_limited_time_offer
+        
+        if onSale == true{
+            cell.itemSaleUntil.text = "Sale ends: \(arrayOfSearchItems[indexPath.row].limited_time_offer_ends_on)"
+            cell.itemSave.text = "Sale!"
+        }
+        else{
+            cell.itemSaleUntil.text = "Currently no promotion"
+            cell.itemSave.isHidden = true
+            print("hidden")
+        }
+        
         cell.backgroundColor = .clear
         return cell
     }
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(80)
-    }
+    }*/
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("This cell from the chat list was selected: \(indexPath.row)")

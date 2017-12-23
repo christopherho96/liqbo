@@ -28,3 +28,7 @@ class StoreDateModel{
     var fridayHours = ""
     var saturdayHours = ""
 }
+
+class ItemsAddedToCart {
+    var addedItemsToCart: [ProductDataModel] = []
+}

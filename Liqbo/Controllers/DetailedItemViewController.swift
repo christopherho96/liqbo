@@ -12,7 +12,7 @@ protocol CanRecieveItemData {
     func dataItemDataRecieved(data: ProductDataModel)
 }
 
-class DetailedItemViewController: UIViewController {
+class DetailedItemViewController: UIViewController{    
 
     var recivedItemData: ProductDataModel?
     
@@ -66,19 +66,40 @@ class DetailedItemViewController: UIViewController {
         currentTotalPrice = (recivedItemData!.price_in_cents)/100 * Float(currentCount)
         
         if currentCount != 0{
-        
+            
+            var itemAlreadyExistsInCart = false
+            
+            // loops throught current cart and see if item already exists
+            for item in arrayOfItemsAddedToCart.addedItemsToCart{
+                
+                // if it already exists, change current params
+                if recivedItemData!.name == item.name {
+                    item.numberAddedToCart = currentCount
+                    item.currentPriceOfTotalCount = Float(currentCount) * recivedItemData!.price_in_cents
+                    itemAlreadyExistsInCart = true
+                }
+            }
+            
+            //if doesnt exist, add new element to cart
+            if itemAlreadyExistsInCart ==  false {
+                recivedItemData?.numberAddedToCart = currentCount
+                recivedItemData?.currentPriceOfTotalCount = Float(currentCount) * recivedItemData!.price_in_cents
+                arrayOfItemsAddedToCart.addedItemsToCart.append(recivedItemData!)
+            }
+            
             let alert = UIAlertController(title: "Added to Cart", message: "\(currentCount) \(recivedItemData!.name) with a total cost of $\(String(format:"%.2f",currentTotalPrice)) has been added.", preferredStyle: .alert)
             
-            let continueShopping = UIAlertAction(title: "Continue Shopping" , style: .default, handler: { (UIAlertAction) in
+            let continueShopping = UIAlertAction(title: "OK" , style: .default, handler: { (UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
             })
             
-            let goToCart =  UIAlertAction(title: "Go To Cart" , style: .default, handler: { (UIAlertAction) in
-                
-            })
+           /* let goToCart =  UIAlertAction(title: "Go To Cart" , style: .default, handler: { (UIAlertAction) in
+                let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "ShoppingCartVC")
+                self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
+            })*/
             
             alert.addAction(continueShopping)
-            alert.addAction(goToCart)
+            //alert.addAction(goToCart)
             present(alert, animated: true, completion: nil)
 
         }
@@ -100,24 +121,26 @@ class DetailedItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentCount = recivedItemData!.numberAddedToCart
         
         itemImage.af_setImage(withURL: recivedItemData!.image_url)
         itemImage.clipsToBounds = true
         
+        countLabel.text = "\(recivedItemData!.numberAddedToCart)"
         
         itemName.text = recivedItemData!.name
         print(itemName.text!)
         //itemStyle.text = recivedItemData!.style
-        itemOrigin.text = "\(recivedItemData!.origin)"
-        itemAlchoholContent.text = "\(String(format:"%.1f", recivedItemData!.alcohol_content / 100))%"
+        itemOrigin.text = "- \(recivedItemData!.origin)"
+        itemAlchoholContent.text = "- Alcohol content of \(String(format:"%.1f", recivedItemData!.alcohol_content / 100))%"
         
         let onSale = recivedItemData!.has_limited_time_offer
         
         if onSale == true{
-            itemIsOnSale.text = "Save $\(String(format: "%.2f", recivedItemData!.limited_time_offer_savings_in_cents/100)) until \(recivedItemData!.limited_time_offer_ends_on)"
+            itemIsOnSale.text = "- Save $\(String(format: "%.2f", recivedItemData!.limited_time_offer_savings_in_cents/100)) until \(recivedItemData!.limited_time_offer_ends_on)"
         }
         else{
-            itemIsOnSale.text = "Currently no promotion"
+            itemIsOnSale.text = "- Currently no promotion"
         }
         
        let price = convertPriceFromCentsToDollars(price: recivedItemData!.price_in_cents)
@@ -126,27 +149,45 @@ class DetailedItemViewController: UIViewController {
         let amountText = NSMutableAttributedString.init(string: combinedString)
         let numberOfCharInPrice = price.count + 1
         
-        amountText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 48),
-                                  NSAttributedStringKey.foregroundColor: UIColor.black],  range: NSMakeRange(0, numberOfCharInPrice ))
+        amountText.setAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17 ),
+                              NSAttributedStringKey.foregroundColor: UIColor.init(hex: "FF5252")],  range: NSMakeRange(0, numberOfCharInPrice ))
         
         itemPricePerPackage.attributedText = amountText
         
-        
         decrementButton.layer.masksToBounds = true
-        decrementButton.layer.cornerRadius = decrementButton.frame.width/2
+        decrementButton.roundedLeftSideOfButton()
         decrementButton.layer.borderColor = UIColor.white.cgColor
-        decrementButton.layer.borderWidth = 2
+        // decrementButton.layer.borderWidth = 2
         
         incrementButton.layer.masksToBounds = true
-        incrementButton.layer.cornerRadius = decrementButton.frame.width/2
+        //incrementButton.layer.cornerRadius = 5
+        incrementButton.roundedRightSideOfButton()
         incrementButton.layer.borderColor = UIColor.white.cgColor
-        incrementButton.layer.borderWidth = 2
+        //incrementButton.layer.borderWidth = 2
         
-        addToCartButton.layer.cornerRadius = addToCartButton.frame.height/2
+        addToCartButton.layer.cornerRadius = 5
         addToCartButton.layer.borderColor = UIColor.white.cgColor
-        addToCartButton.layer.borderWidth = 2
+        //addToCartButton.layer.borderWidth = 2
  
+    }
+    
+    //put button styling in viewDidAppear since timing for compilation fucks up corners
+    override func viewDidAppear(_ animated: Bool) {
+    
+        decrementButton.layer.masksToBounds = true
+        decrementButton.roundedLeftSideOfButton()
+        decrementButton.layer.borderColor = UIColor.white.cgColor
+        // decrementButton.layer.borderWidth = 2
         
+        incrementButton.layer.masksToBounds = true
+        //incrementButton.layer.cornerRadius = 5
+        incrementButton.roundedRightSideOfButton()
+        incrementButton.layer.borderColor = UIColor.white.cgColor
+        //incrementButton.layer.borderWidth = 2
+        
+        addToCartButton.layer.cornerRadius = 5
+        addToCartButton.layer.borderColor = UIColor.white.cgColor
+        //addToCartButton.layer.borderWidth = 2
     }
 
     override func didReceiveMemoryWarning() {
@@ -161,3 +202,28 @@ class DetailedItemViewController: UIViewController {
     }
     
 }
+
+extension UIButton{
+    func roundedRightSideOfButton(){
+        let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.topRight , .bottomRight],
+                                     cornerRadii: CGSize(width:5.0, height: 5.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPAth1.cgPath
+        self.layer.mask = maskLayer1
+        
+    }
+    func roundedLeftSideOfButton(){
+        let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.topLeft , .bottomLeft],
+                                     cornerRadii: CGSize(width:5.0, height: 5.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPAth1.cgPath
+        self.layer.mask = maskLayer1
+        
+    }
+}
+
+
