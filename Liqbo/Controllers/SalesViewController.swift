@@ -84,32 +84,31 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             numberOfSaleItems = json["result"].count
             print(" Number of items on sale: \(numberOfSaleItems)")
             
-            for saleItem in saleItems{
+            for productItem in saleItems{
                 
-                let productDataModel = ProductDataModel()
+                let productDataModel = ProductDataModel(name: productItem["name"].stringValue,
+                                                        price_in_cents: productItem["price_in_cents"].floatValue,
+                                                        primary_category: productItem["primary_category"].stringValue,
+                                                        origin: productItem["origin"].stringValue,
+                                                        has_limited_time_offer: productItem["has_limited_time_offer"].boolValue,
+                                                        limited_time_offer_savings_in_cents: productItem["limited_time_offer_savings_in_cents"].floatValue,
+                                                        limited_time_offer_ends_on: productItem["limited_time_offer_ends_on"].stringValue,
+                                                        description: productItem["description"].stringValue,
+                                                        package: productItem["package"].stringValue,
+                                                        total_package_units: productItem["total_package_units"].intValue,
+                                                        volume_in_milliliters: productItem["volume_in_milliliters"].intValue,
+                                                        alcohol_content: productItem["alcohol_content"].floatValue,
+                                                        style: productItem["style"].stringValue)
                 
-                productDataModel.name = saleItem["name"].stringValue
-                productDataModel.id = saleItem["id"].intValue
-                productDataModel.price_in_cents = saleItem["price_in_cents"].floatValue
-                productDataModel.primary_category = saleItem["primary_category"].stringValue
-                productDataModel.has_limited_time_offer = saleItem["has_limited_time_offer"].boolValue
-                productDataModel.limited_time_offer_savings_in_cents = saleItem["limited_time_offer_savings_in_cents"].floatValue
-                productDataModel.limited_time_offer_ends_on = saleItem["limited_time_offer_ends_on"].stringValue
-                productDataModel.package = saleItem["package"].stringValue
-                productDataModel.total_package_units = saleItem["total_package_units"].intValue
-                productDataModel.volume_in_milliliters = saleItem["volume_in_milliliters"].intValue
-                productDataModel.alcohol_content = saleItem["alcohol_content"].floatValue
-                productDataModel.style = saleItem["style"].stringValue
-                productDataModel.description = saleItem["description"].stringValue
-                productDataModel.origin = saleItem["origin"].stringValue
                 
-                if saleItem["image_thumb_url"] != JSON.null{
-                    productDataModel.image_thumb_url = saleItem["image_thumb_url"].url!
+                if productItem["image_thumb_url"] != JSON.null{
+                    productDataModel.image_thumb_url = productItem["image_thumb_url"].url!
                 }
                 
-                if saleItem["image_url"] != JSON.null {
-                    productDataModel.image_url = saleItem["image_url"].url!
+                if productItem["image_url"] != JSON.null {
+                    productDataModel.image_url = productItem["image_url"].url!
                 }
+                
                 allSaleItems.append(productDataModel)
             }
             self.salesTableView.reloadData()
@@ -156,6 +155,7 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         itemDataToSendToDetailedView = allSaleItems[indexPath.row]
         print("This cell from the chat list was selected: \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "segueSaleItem", sender: self)
     }
     

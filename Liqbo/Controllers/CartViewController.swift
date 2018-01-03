@@ -80,6 +80,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("This cell from the chat list was selected: \(indexPath.row)")
         itemDataToSendToDetailedView = arrayOfItemsAddedToCart.addedItemsToCart[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "segueToDetailedItemView", sender: self)
     }
     

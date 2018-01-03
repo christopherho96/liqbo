@@ -111,22 +111,19 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             
             for productItem in productItems{
                 
-                let productDataModel = ProductDataModel()
-                
-                productDataModel.name = productItem["name"].stringValue
-                productDataModel.id = productItem["id"].intValue
-                productDataModel.price_in_cents = productItem["price_in_cents"].floatValue
-                productDataModel.primary_category = productItem["primary_category"].stringValue
-                productDataModel.has_limited_time_offer = productItem["has_limited_time_offer"].boolValue
-                productDataModel.limited_time_offer_savings_in_cents = productItem["limited_time_offer_savings_in_cents"].floatValue
-                productDataModel.limited_time_offer_ends_on = productItem["limited_time_offer_ends_on"].stringValue
-                productDataModel.package = productItem["package"].stringValue
-                productDataModel.total_package_units = productItem["total_package_units"].intValue
-                productDataModel.volume_in_milliliters = productItem["volume_in_milliliters"].intValue
-                productDataModel.alcohol_content = productItem["alcohol_content"].floatValue
-                productDataModel.style = productItem["style"].stringValue
-                productDataModel.description = productItem["description"].stringValue
-                productDataModel.origin = productItem["origin"].stringValue
+                let productDataModel = ProductDataModel(name: productItem["name"].stringValue,
+                                                        price_in_cents: productItem["price_in_cents"].floatValue,
+                                                        primary_category: productItem["primary_category"].stringValue,
+                                                        origin: productItem["origin"].stringValue,
+                                                        has_limited_time_offer: productItem["has_limited_time_offer"].boolValue,
+                                                        limited_time_offer_savings_in_cents: productItem["limited_time_offer_savings_in_cents"].floatValue,
+                                                        limited_time_offer_ends_on: productItem["limited_time_offer_ends_on"].stringValue,
+                                                        description: productItem["description"].stringValue,
+                                                        package: productItem["package"].stringValue,
+                                                        total_package_units: productItem["total_package_units"].intValue,
+                                                        volume_in_milliliters: productItem["volume_in_milliliters"].intValue,
+                                                        alcohol_content: productItem["alcohol_content"].floatValue,
+                                                        style: productItem["style"].stringValue)
                 
                 if productItem["image_thumb_url"] != JSON.null{
                     productDataModel.image_thumb_url = productItem["image_thumb_url"].url!
@@ -136,10 +133,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                     productDataModel.image_url = productItem["image_url"].url!
                 }
 
-                //there may be an error here since it might unwrap a nil
                 arrayOfSearchItems.append(productDataModel)
             }
             self.searchTableView.reloadData()
+            
         }else{
             print("error parsing the json stuff")
         }
@@ -157,25 +154,28 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         
       let cell = tableView.dequeueReusableCell(withIdentifier: "customSaleItemCell", for: indexPath) as! CustomSaleItemCell
         
-        cell.itemName.text = arrayOfSearchItems[indexPath.row].name
+        let item = arrayOfSearchItems[indexPath.row]
         
-        cell.itemPackage.text = arrayOfSearchItems[indexPath.row].package
+        cell.itemName.text = item.name
+        
+        cell.itemPackage.text = item.package
         cell.itemPackage.textColor = UIColor.lightGray
 
         
-        cell.itemPrice.text = "Price: " + String(format: "%.2f", arrayOfSearchItems[indexPath.row].price_in_cents / 100)
+        cell.itemPrice.text = "Price: " + String(format: "%.2f", item.price_in_cents / 100)
         cell.itemPrice.textColor = UIColor.lightGray
         cell.itemPrice.sizeToFit()
         
-        cell.itemThumbnail.af_setImage(withURL: arrayOfSearchItems[indexPath.row].image_thumb_url)
+        cell.itemThumbnail.af_setImage(withURL: item.image_thumb_url)
         cell.itemThumbnail.clipsToBounds = true
         cell.itemThumbnail.layer.cornerRadius = 8;
         
-        let onSale = arrayOfSearchItems[indexPath.row].has_limited_time_offer
+        let onSale = item.has_limited_time_offer
         
         if onSale == true{
-            cell.itemSaleUntil.text = "Sale ends: \(arrayOfSearchItems[indexPath.row].limited_time_offer_ends_on)"
+            cell.itemSaleUntil.text = "Sale ends: \(item.limited_time_offer_ends_on)"
             cell.itemSave.text = "Sale!"
+            cell.itemSave.isHidden = false
         }
         else{
             cell.itemSaleUntil.text = "Currently no promotion"
@@ -195,6 +195,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("This cell from the chat list was selected: \(indexPath.row)")
         itemDataToSendToDetailedView = arrayOfSearchItems[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
     
         performSegue(withIdentifier: "segueToDetailedItemView", sender: self)
     }

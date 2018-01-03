@@ -216,6 +216,7 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
                 print (arrayOfSearchStores[indexPath.row].sundayHours)
         itemDataToSendToDetailedView = arrayOfSearchStores[indexPath.row]
         print("This cell from the chat list was selected: \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "segueToDetailedStoreView", sender: self)
     }
     
