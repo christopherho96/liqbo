@@ -12,6 +12,7 @@ class ProductDataModel{
     
     var name: String = ""
     var price_in_cents: Float = 0
+    var regular_price_in_cents: Float = 0
     var primary_category: String = ""
     var origin: String = ""
     var has_limited_time_offer: Bool = false
@@ -27,6 +28,7 @@ class ProductDataModel{
     var image_url : URL = URL(string: "https://s3.amazonaws.com/woof.nextglass.co/custom_item_type_images_production/af7e5a9d2a54837d65cae5637975ba8dfa05311f-custom-item-type-image.png?1476365129")!
     var numberAddedToCart = 1;
     var currentPriceOfTotalCount: Float = 0
+    
     
     init(name: String,price_in_cents: Float, primary_category: String, origin: String, has_limited_time_offer: Bool, limited_time_offer_savings_in_cents: Float, limited_time_offer_ends_on: String, description: String, package: String, total_package_units: Int, volume_in_milliliters: Int, alcohol_content: Float, style: String) {
         

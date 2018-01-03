@@ -30,6 +30,7 @@
 		FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */; };
 		FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */; };
 		FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D1F1FB6688B00700E36 /* LaunchScreen.storyboard */; };
+		FE687C361FFC6F8A00B39DAA /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE687C351FFC6F8A00B39DAA /* CustomCollectionViewCell.swift */; };
 		FEE0B6521FECC353003B13E8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE4E1D201FB6688B00700E36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE4E1D221FB6688B00700E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE687C351FFC6F8A00B39DAA /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				FE0831571FC7AAC500F1591B /* DetailedItemViewController.swift */,
 				FE0DF45F1FCC7D87002288C2 /* DetailedStoreViewController.swift */,
 				FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */,
+				FE687C351FFC6F8A00B39DAA /* CustomCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */,
 				FE0DF4601FCC7D87002288C2 /* DetailedStoreViewController.swift in Sources */,
 				FE3B5B0F1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift in Sources */,
+				FE687C361FFC6F8A00B39DAA /* CustomCollectionViewCell.swift in Sources */,
 				FE0831581FC7AAC500F1591B /* DetailedItemViewController.swift in Sources */,
 				FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */,
 				FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */,

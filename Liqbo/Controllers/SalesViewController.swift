@@ -12,36 +12,35 @@ import SwiftyJSON
 import AlamofireImage
 import SVProgressHUD
 
-class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SalesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
-    
-    
     var itemDataToSendToDetailedView : ProductDataModel?
     
     var LCBO_SALES_URL = "https://lcboapi.com/products?access_key=MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC&where=has_limited_time_offer"
     
-    @IBOutlet weak var salesTableView: UITableView!
-    
-
-    
+    @IBOutlet weak var salesCollectionView: UICollectionView!
     
     var numberOfSaleItems = 0
     var allSaleItems: [ProductDataModel] = []
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        salesTableView.delegate = self
-        salesTableView.dataSource = self
-        salesTableView.estimatedRowHeight = salesTableView.rowHeight
-        salesTableView.rowHeight = UITableViewAutomaticDimension
-        salesTableView.register(UINib(nibName: "SaleItemCell", bundle: nil), forCellReuseIdentifier: "customSaleItemCell")
-        salesTableView.separatorStyle = .singleLine
+        getSalesData(url: LCBO_SALES_URL)
         
-                getSalesData(url: LCBO_SALES_URL)
+        let itemSize = UIScreen.main.bounds.width/2 - 35
+        
+        let sectionInset = (UIScreen.main.bounds.width/2) / 8
+
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: itemSize, height: 185)
+        layout.sectionInset.top = sectionInset
+        layout.sectionInset.left = sectionInset
+        layout.sectionInset.right = sectionInset
+        layout.sectionInset.bottom = sectionInset
+        layout.minimumLineSpacing = 25
+        
+        salesCollectionView.collectionViewLayout = layout
         
     }
 
@@ -109,9 +108,11 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     productDataModel.image_url = productItem["image_url"].url!
                 }
                 
+                productDataModel.regular_price_in_cents = productItem["regular_price_in_cents"].floatValue
+                
                 allSaleItems.append(productDataModel)
             }
-            self.salesTableView.reloadData()
+            self.salesCollectionView.reloadData()
         }else{
             print("error parsing the json stuff")
         }
@@ -121,41 +122,43 @@ class SalesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //update UI here
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return(allSaleItems.count)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return(allSaleItems.count)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customSaleItemCell", for: indexPath) as! CustomSaleItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "$"+String(format: "%.2f", allSaleItems[indexPath.row].regular_price_in_cents / 100))
+        
+        attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+       
+        
+        cell.itemImage.af_setImage(withURL: allSaleItems[indexPath.row].image_thumb_url)
+        cell.itemDiscount.text = "-$" + String(format: "%.2f", allSaleItems[indexPath.row].limited_time_offer_savings_in_cents / 100)
         cell.itemName.text = allSaleItems[indexPath.row].name
-
         cell.itemPackage.text = allSaleItems[indexPath.row].package
-
-        cell.itemPrice.text = "Price: " + String(format: "%.2f", allSaleItems[indexPath.row].price_in_cents / 100)
         
-        cell.itemSaleUntil.text = "Sale ends: \(allSaleItems[indexPath.row].limited_time_offer_ends_on)"
+        let currentPrice = "$" + String(format: "%.2f", allSaleItems[indexPath.row].price_in_cents / 100) + " "
+        let regularPrice = "$"+String(format: "%.2f", allSaleItems[indexPath.row].regular_price_in_cents / 100)
+        let combinedString = currentPrice+regularPrice
+        let amountText = NSMutableAttributedString.init(string: combinedString)
+        let numberOfCharInPrice = currentPrice.count
+        print(numberOfCharInPrice)
         
-        cell.itemSave.applyDesign()
-        cell.itemSave.text =  "-" + String(format: "%.2f", allSaleItems[indexPath.row].limited_time_offer_savings_in_cents / 100)
-        cell.itemSave.layer.borderWidth = 1
-        cell.itemSave.layer.borderColor = UIColor.red.cgColor
-
+        amountText.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue),  range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
+        amountText.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.lightGray, range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
+        amountText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
+        cell.itemPrice.attributedText = amountText
         
-        cell.itemThumbnail.af_setImage(withURL: allSaleItems[indexPath.row].image_thumb_url)
-        cell.itemThumbnail.clipsToBounds = true
-        cell.itemThumbnail.layer.cornerRadius = 8;
-        
-        cell.backgroundColor = .clear
         return cell
-        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         itemDataToSendToDetailedView = allSaleItems[indexPath.row]
         print("This cell from the chat list was selected: \(indexPath.row)")
-        tableView.deselectRow(at: indexPath, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
         performSegue(withIdentifier: "segueSaleItem", sender: self)
     }
     
