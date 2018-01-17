@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,21 +28,21 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Mla-I9-lBw">
-                        <rect key="frame" x="101" y="15" width="250" height="60.5"/>
+                        <rect key="frame" x="101" y="15" width="202" height="60.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEh-9X-ezf">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="yEh-9X-ezf">
+                                <rect key="frame" x="0.0" y="0.0" width="202" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcN-YL-aIH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="97.5" translatesAutoresizingMaskIntoConstraints="NO" id="vcN-YL-aIH">
                                 <rect key="frame" x="0.0" y="22.5" width="97.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyN-SG-hRa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="uyN-SG-hRa">
                                 <rect key="frame" x="0.0" y="42.5" width="42" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,11 +53,24 @@
                             <constraint firstAttribute="trailing" secondItem="yEh-9X-ezf" secondAttribute="trailing" id="W04-5P-idz"/>
                         </constraints>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHf-3B-f5a">
+                        <rect key="frame" x="311" y="36" width="48" height="48"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="LHf-3B-f5a" secondAttribute="height" multiplier="1:1" id="zPa-Tk-hCy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="LHf-3B-f5a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="25" id="2DE-4r-5L2"/>
                     <constraint firstItem="Mla-I9-lBw" firstAttribute="leading" secondItem="fZj-ny-X5W" secondAttribute="trailing" constant="8" id="JVe-Qa-jFC"/>
-                    <constraint firstAttribute="trailing" secondItem="Mla-I9-lBw" secondAttribute="trailing" constant="24" id="OUs-9B-P0s"/>
                     <constraint firstItem="Mla-I9-lBw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="PRp-zM-efv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LHf-3B-f5a" secondAttribute="trailing" id="RaX-QN-ooC"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="LHf-3B-f5a" secondAttribute="bottom" constant="25" id="VN9-Fj-5Xd"/>
+                    <constraint firstItem="LHf-3B-f5a" firstAttribute="leading" secondItem="Mla-I9-lBw" secondAttribute="trailing" constant="8" id="fS0-is-s8u"/>
                     <constraint firstAttribute="bottom" secondItem="fZj-ny-X5W" secondAttribute="bottom" constant="10.5" id="pq6-VV-iQp"/>
                     <constraint firstItem="fZj-ny-X5W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vkV-dW-49f"/>
                     <constraint firstItem="fZj-ny-X5W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="ylU-bl-5ZU"/>
@@ -63,6 +78,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="currentCount" destination="LHf-3B-f5a" id="PhT-h0-pVw"/>
                 <outlet property="itemDescription" destination="vcN-YL-aIH" id="v5I-c9-Lc7"/>
                 <outlet property="itemImage" destination="fZj-ny-X5W" id="zZt-Gh-U7N"/>
                 <outlet property="itemPrice" destination="uyN-SG-hRa" id="vnQ-TJ-0UB"/>

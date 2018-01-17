@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0910"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E496980462C8BB704AD4B6770078AA9"
+               BlueprintIdentifier = "4C942B607FAAA29A2F1A654D4F5E1E44"
                BuildableName = "Pods_Liqbo.framework"
                BlueprintName = "Pods-Liqbo"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5E496980462C8BB704AD4B6770078AA9"
+            BlueprintIdentifier = "4C942B607FAAA29A2F1A654D4F5E1E44"
             BuildableName = "Pods_Liqbo.framework"
             BlueprintName = "Pods-Liqbo"
             ReferencedContainer = "container:Pods.xcodeproj">

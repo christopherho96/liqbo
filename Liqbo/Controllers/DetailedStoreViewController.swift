@@ -39,12 +39,10 @@ class DetailedStoreViewController: UIViewController, MKMapViewDelegate, CLLocati
         
     }
     
-    @IBAction func dismissButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
 
         Map.delegate = self
         

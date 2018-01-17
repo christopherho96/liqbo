@@ -121,9 +121,20 @@ class DetailedItemViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         currentCount = recivedItemData!.numberAddedToCart
         
-        itemImage.af_setImage(withURL: recivedItemData!.image_url)
+        //itemImage.af_setImage(withURL: recivedItemData!.image_url)
+        
+        let url : URL?
+        if recivedItemData!.image_url != nil {
+            url = URL(string: recivedItemData!.image_url!)
+        }else{
+            url = URL(string: "https://s3.amazonaws.com/woof.nextglass.co/custom_item_type_images_production/af7e5a9d2a54837d65cae5637975ba8dfa05311f-custom-item-type-image.png?1476365129")
+        }
+        itemImage.af_setImage(withURL: url!)
+        
         itemImage.clipsToBounds = true
         
         countLabel.text = "\(recivedItemData!.numberAddedToCart)"

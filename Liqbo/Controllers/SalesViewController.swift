@@ -15,19 +15,20 @@ import SVProgressHUD
 class SalesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
     var itemDataToSendToDetailedView : ProductDataModel?
+    var currentPage = 1
+    var numberOfPages: Int = 0;
+    var totalItemsToBeLoaded: Int = 0;
     
     var LCBO_SALES_URL = "https://lcboapi.com/products?access_key=MDpmYjcyMDI5MC1jNjkwLTExZTctODFkNi01Nzk0MGZlMTcyMDE6a2ZTczF5ZXVnckEyMDgwZXBSeDVmZDNpYUVIYk5mTmo0azFC&where=has_limited_time_offer"
     
     @IBOutlet weak var salesCollectionView: UICollectionView!
     
-    var numberOfSaleItems = 0
     var allSaleItems: [ProductDataModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getSalesData(url: LCBO_SALES_URL)
-        
+        getSalesData(url: LCBO_SALES_URL, parameters: ["page": String(currentPage)])
         let itemSize = UIScreen.main.bounds.width/2 - 35
         
         let sectionInset = (UIScreen.main.bounds.width/2) / 8
@@ -52,11 +53,14 @@ class SalesViewController: UIViewController, UICollectionViewDelegate, UICollect
     //MARK: - Networking
     /***************************************************************/
     
-    func getSalesData (url: String){
-        SVProgressHUD.show()
+    func getSalesData (url: String, parameters: [String: String] ){
+        
+        if currentPage == 1{
+            SVProgressHUD.show()
+        }
         //making http request with alamofire
         
-        Alamofire.request(url).responseJSON { (response) in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON{ (response) in
             
             if response.result.isSuccess{
                 
@@ -67,7 +71,8 @@ class SalesViewController: UIViewController, UICollectionViewDelegate, UICollect
                 self.updateSalesData(json: salesJSON)
                 
             }else{
-                print("Error \(response.result.error!)")
+                print("Error could not get sales data \(response.result.error!)")
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -78,80 +83,99 @@ class SalesViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func updateSalesData(json: JSON){
        
-        if let saleItems = json["result"].array {
-            
-            numberOfSaleItems = json["result"].count
-            print(" Number of items on sale: \(numberOfSaleItems)")
-            
-            for productItem in saleItems{
-                
-                let productDataModel = ProductDataModel(name: productItem["name"].stringValue,
-                                                        price_in_cents: productItem["price_in_cents"].floatValue,
-                                                        primary_category: productItem["primary_category"].stringValue,
-                                                        origin: productItem["origin"].stringValue,
-                                                        has_limited_time_offer: productItem["has_limited_time_offer"].boolValue,
-                                                        limited_time_offer_savings_in_cents: productItem["limited_time_offer_savings_in_cents"].floatValue,
-                                                        limited_time_offer_ends_on: productItem["limited_time_offer_ends_on"].stringValue,
-                                                        description: productItem["description"].stringValue,
-                                                        package: productItem["package"].stringValue,
-                                                        total_package_units: productItem["total_package_units"].intValue,
-                                                        volume_in_milliliters: productItem["volume_in_milliliters"].intValue,
-                                                        alcohol_content: productItem["alcohol_content"].floatValue,
-                                                        style: productItem["style"].stringValue)
-                
-                
-                if productItem["image_thumb_url"] != JSON.null{
-                    productDataModel.image_thumb_url = productItem["image_thumb_url"].url!
-                }
-                
-                if productItem["image_url"] != JSON.null {
-                    productDataModel.image_url = productItem["image_url"].url!
-                }
-                
-                productDataModel.regular_price_in_cents = productItem["regular_price_in_cents"].floatValue
-                
-                allSaleItems.append(productDataModel)
-            }
-            self.salesCollectionView.reloadData()
-        }else{
-            print("error parsing the json stuff")
-        }
+        let totalItemsReturned = json["pager"]
+        numberOfPages = totalItemsReturned["total_pages"].intValue
+        totalItemsToBeLoaded = totalItemsReturned["total_record_count"].intValue
         
-        SVProgressHUD.dismiss()
+        if currentPage != numberOfPages{
+            
+            currentPage = currentPage + 1
+            print(currentPage)
+            
+            if let saleItems = json["result"].array {
+
+                
+                for productItem in saleItems{
+                    
+                    let productDataModel = ProductDataModel()
+                    
+                    productDataModel.name = productItem["name"].stringValue
+                    productDataModel.price_in_cents = productItem["price_in_cents"].floatValue
+                    productDataModel.regular_price_in_cents = productItem["regular_price_in_cents"].floatValue
+                    productDataModel.origin = productItem["origin"].stringValue
+                    productDataModel.has_limited_time_offer = productItem["has_limited_time_offer"].boolValue
+                    productDataModel.limited_time_offer_savings_in_cents = productItem["limited_time_offer_savings_in_cents"].floatValue
+                    productDataModel.limited_time_offer_ends_on = productItem["limited_time_offer_ends_on"].stringValue
+                    productDataModel.package = productItem["package"].stringValue
+                    productDataModel.volume_in_milliliters = productItem["volume_in_milliliters"].intValue
+                    productDataModel.alcohol_content = productItem["alcohol_content"].floatValue
+                    
+                    if productItem["image_thumb_url"] != JSON.null{
+                        productDataModel.image_thumb_url = productItem["image_thumb_url"].stringValue
+                    }
+                    
+                    if productItem["image_url"] != JSON.null{
+                        productDataModel.image_url = productItem["image_url"].stringValue
+                    }
+                    allSaleItems.append(productDataModel)
+                }
+                print("items have been added to array")
+                self.salesCollectionView.reloadData()
+            }else{
+                print("error parsing the json stuff")
+            }
+            
+            SVProgressHUD.dismiss()
+        }else{
+            print("no more pages to load")
+        }
+
     }
     
     //update UI here
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return(allSaleItems.count)
+        return(totalItemsToBeLoaded)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "$"+String(format: "%.2f", allSaleItems[indexPath.row].regular_price_in_cents / 100))
+        //this if statement ensures that the array element is not out of index
+        if indexPath.row <= allSaleItems.count-1 {
+            let item  = allSaleItems[indexPath.row]
+            
+            print("\(indexPath.row) and \(item.name)" )
+
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "$"+String(format: "%.2f", item.regular_price_in_cents / 100))
         
-        attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
        
+            //set image
+            let url : URL?
+            if item.image_thumb_url != nil {
+                url = URL(string: item.image_thumb_url!)
+            }else{
+                url = URL(string: "https://s3.amazonaws.com/woof.nextglass.co/custom_item_type_images_production/af7e5a9d2a54837d65cae5637975ba8dfa05311f-custom-item-type-image.png?1476365129")
+            }
+            cell.itemImage.af_setImage(withURL: url!)
+
+            cell.itemDiscount.text = "-$" + String(format: "%.2f", item.limited_time_offer_savings_in_cents / 100)
+            cell.itemName.text = item.name
+            cell.itemPackage.text = item.package
         
-        cell.itemImage.af_setImage(withURL: allSaleItems[indexPath.row].image_thumb_url)
-        cell.itemDiscount.text = "-$" + String(format: "%.2f", allSaleItems[indexPath.row].limited_time_offer_savings_in_cents / 100)
-        cell.itemName.text = allSaleItems[indexPath.row].name
-        cell.itemPackage.text = allSaleItems[indexPath.row].package
+            let currentPrice = "$" + String(format: "%.2f", item.price_in_cents / 100) + " "
+            let regularPrice = "$"+String(format: "%.2f", item.regular_price_in_cents / 100)
+            let combinedString = currentPrice+regularPrice
+            let amountText = NSMutableAttributedString.init(string: combinedString)
+            let numberOfCharInPrice = currentPrice.count
         
-        let currentPrice = "$" + String(format: "%.2f", allSaleItems[indexPath.row].price_in_cents / 100) + " "
-        let regularPrice = "$"+String(format: "%.2f", allSaleItems[indexPath.row].regular_price_in_cents / 100)
-        let combinedString = currentPrice+regularPrice
-        let amountText = NSMutableAttributedString.init(string: combinedString)
-        let numberOfCharInPrice = currentPrice.count
-        print(numberOfCharInPrice)
-        
-        amountText.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue),  range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
-        amountText.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.lightGray, range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
-        amountText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
-        cell.itemPrice.attributedText = amountText
-        
+            amountText.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue),  range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
+            amountText.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.lightGray, range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
+            amountText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: NSMakeRange(numberOfCharInPrice, regularPrice.count))
+            cell.itemPrice.attributedText = amountText
+        }
         return cell
     }
     
@@ -160,6 +184,13 @@ class SalesViewController: UIViewController, UICollectionViewDelegate, UICollect
         print("This cell from the chat list was selected: \(indexPath.row)")
         collectionView.deselectItem(at: indexPath, animated: true)
         performSegue(withIdentifier: "segueSaleItem", sender: self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let lastElement = allSaleItems.count - 10
+        if indexPath.row == lastElement {
+            getSalesData(url: LCBO_SALES_URL, parameters: ["page" : String(currentPage)])
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

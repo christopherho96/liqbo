@@ -41,7 +41,6 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDelega
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
     }
     
     func configurePageControl() {
@@ -85,9 +84,16 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDelega
         
         if sender.tag == 1{
             print("skip pressed")
+            performSegue(withIdentifier: "leaveOnboardingSegue", sender: nil)
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey:"firstTime")
         }
         else{
             //print("next pressed")
+            
+            if currentIndex == 2 {
+                performSegue(withIdentifier: "goToThirdPageInOnbord", sender: self)
+            }
             
             if currentIndex == 3{
                 print ("test worked")

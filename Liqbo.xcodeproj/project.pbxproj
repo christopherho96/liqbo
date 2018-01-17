@@ -24,6 +24,14 @@
 		FE10F3981FBD101200385CF6 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10F3971FBD101200385CF6 /* CartViewController.swift */; };
 		FE3B5B0F1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B5B0D1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift */; };
 		FE3B5B101FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE3B5B0E1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib */; };
+		FE4D6668200155A400202334 /* ListOfItemsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D6667200155A400202334 /* ListOfItemsDataModel.swift */; };
+		FE4D66722002DC5200202334 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D66712002DC5200202334 /* ListTableViewController.swift */; };
+		FE4D66762002F58C00202334 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D66742002F58C00202334 /* ListTableViewCell.swift */; };
+		FE4D66772002F58C00202334 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4D66752002F58C00202334 /* ListTableViewCell.xib */; };
+		FE4D667B200317FC00202334 /* CustomCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D6679200317FC00202334 /* CustomCategoryCell.swift */; };
+		FE4D667C200317FC00202334 /* CustomCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4D667A200317FC00202334 /* CustomCategoryCell.xib */; };
+		FE4D667E2003187800202334 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D667D2003187800202334 /* CategoryViewController.swift */; };
+		FE4D66802004640700202334 /* ItemsOfSelectedCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D667F2004640700202334 /* ItemsOfSelectedCategoryTableViewController.swift */; };
 		FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D131FB6688A00700E36 /* AppDelegate.swift */; };
 		FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E1D151FB6688B00700E36 /* HomeViewController.swift */; };
 		FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4E1D171FB6688B00700E36 /* Main.storyboard */; };
@@ -54,6 +62,14 @@
 		FE10F3971FBD101200385CF6 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		FE3B5B0D1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShoppingCartItemCell.swift; sourceTree = "<group>"; };
 		FE3B5B0E1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomShoppingCartItemCell.xib; sourceTree = "<group>"; };
+		FE4D6667200155A400202334 /* ListOfItemsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfItemsDataModel.swift; sourceTree = "<group>"; };
+		FE4D66712002DC5200202334 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		FE4D66742002F58C00202334 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		FE4D66752002F58C00202334 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		FE4D6679200317FC00202334 /* CustomCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCategoryCell.swift; sourceTree = "<group>"; };
+		FE4D667A200317FC00202334 /* CustomCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCategoryCell.xib; sourceTree = "<group>"; };
+		FE4D667D2003187800202334 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		FE4D667F2004640700202334 /* ItemsOfSelectedCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsOfSelectedCategoryTableViewController.swift; sourceTree = "<group>"; };
 		FE4E1D101FB6688A00700E36 /* Liqbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liqbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE4E1D131FB6688A00700E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE4E1D151FB6688B00700E36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +147,24 @@
 			path = CustomShoppingCartItem;
 			sourceTree = "<group>";
 		};
+		FE4D66732002F54300202334 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				FE4D66742002F58C00202334 /* ListTableViewCell.swift */,
+				FE4D66752002F58C00202334 /* ListTableViewCell.xib */,
+			);
+			path = ListCell;
+			sourceTree = "<group>";
+		};
+		FE4D66782003179D00202334 /* CustomCategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				FE4D6679200317FC00202334 /* CustomCategoryCell.swift */,
+				FE4D667A200317FC00202334 /* CustomCategoryCell.xib */,
+			);
+			path = CustomCategoryCell;
+			sourceTree = "<group>";
+		};
 		FE4E1D071FB6688A00700E36 = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +191,6 @@
 				FE4E1D2A1FB668C400700E36 /* View */,
 				FE4E1D1D1FB6688B00700E36 /* Assets.xcassets */,
 				FE4E1D221FB6688B00700E36 /* Info.plist */,
-				FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */,
 			);
 			path = Liqbo;
 			sourceTree = "<group>";
@@ -168,6 +201,8 @@
 				FE094F001FB6A72700B82435 /* ProductDataModel.swift */,
 				FE094F0B1FB7D85000B82435 /* SaleItemModel.swift */,
 				FE094F021FB7C99E00B82435 /* StoreDataModel.swift */,
+				FE4E1D1A1FB6688B00700E36 /* Liqbo.xcdatamodeld */,
+				FE4D6667200155A400202334 /* ListOfItemsDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +219,9 @@
 				FE0DF45F1FCC7D87002288C2 /* DetailedStoreViewController.swift */,
 				FEE0B6511FECC353003B13E8 /* OnboardingViewController.swift */,
 				FE687C351FFC6F8A00B39DAA /* CustomCollectionViewCell.swift */,
+				FE4D66712002DC5200202334 /* ListTableViewController.swift */,
+				FE4D667D2003187800202334 /* CategoryViewController.swift */,
+				FE4D667F2004640700202334 /* ItemsOfSelectedCategoryTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +229,8 @@
 		FE4E1D2A1FB668C400700E36 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE4D66782003179D00202334 /* CustomCategoryCell */,
+				FE4D66732002F54300202334 /* ListCell */,
 				FE3B5B0C1FE4ED6200972AA0 /* CustomShoppingCartItem */,
 				FE0831591FC9323800F1591B /* CustomSaleItemCell */,
 				FE0831451FC6369C00F1591B /* CustomStoreCell */,
@@ -266,8 +306,10 @@
 				FE4E1D211FB6688B00700E36 /* LaunchScreen.storyboard in Resources */,
 				FE4E1D1E1FB6688B00700E36 /* Assets.xcassets in Resources */,
 				FE08315D1FC9325500F1591B /* SaleItemCell.xib in Resources */,
+				FE4D667C200317FC00202334 /* CustomCategoryCell.xib in Resources */,
 				FE0831491FC636BE00F1591B /* StoreCell.xib in Resources */,
 				FE3B5B101FE4EDAC00972AA0 /* CustomShoppingCartItemCell.xib in Resources */,
+				FE4D66772002F58C00202334 /* ListTableViewCell.xib in Resources */,
 				FE10F3941FBD011800385CF6 /* ProductItemCell.xib in Resources */,
 				FE4E1D191FB6688B00700E36 /* Main.storyboard in Resources */,
 			);
@@ -303,6 +345,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Liqbo/Pods-Liqbo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -310,6 +354,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -343,19 +389,25 @@
 				FE08315C1FC9325500F1591B /* CustomSaleItemCell.swift in Sources */,
 				FE4E1D1C1FB6688B00700E36 /* Liqbo.xcdatamodeld in Sources */,
 				FE094F051FB7CF6500B82435 /* SalesViewController.swift in Sources */,
+				FE4D66722002DC5200202334 /* ListTableViewController.swift in Sources */,
 				FE094F011FB6A72700B82435 /* ProductDataModel.swift in Sources */,
 				FE094F0C1FB7D85000B82435 /* SaleItemModel.swift in Sources */,
 				FE0831481FC636BE00F1591B /* CustomStoreCell.swift in Sources */,
 				FE0DF4601FCC7D87002288C2 /* DetailedStoreViewController.swift in Sources */,
 				FE3B5B0F1FE4EDAC00972AA0 /* CustomShoppingCartItemCell.swift in Sources */,
+				FE4D6668200155A400202334 /* ListOfItemsDataModel.swift in Sources */,
 				FE687C361FFC6F8A00B39DAA /* CustomCollectionViewCell.swift in Sources */,
 				FE0831581FC7AAC500F1591B /* DetailedItemViewController.swift in Sources */,
 				FE4E1D161FB6688B00700E36 /* HomeViewController.swift in Sources */,
+				FE4D66762002F58C00202334 /* ListTableViewCell.swift in Sources */,
 				FE4E1D141FB6688A00700E36 /* AppDelegate.swift in Sources */,
 				FEE0B6521FECC353003B13E8 /* OnboardingViewController.swift in Sources */,
+				FE4D667B200317FC00202334 /* CustomCategoryCell.swift in Sources */,
 				FE10F3931FBD011800385CF6 /* CustomProductItemCell.swift in Sources */,
 				FE10F3981FBD101200385CF6 /* CartViewController.swift in Sources */,
+				FE4D66802004640700202334 /* ItemsOfSelectedCategoryTableViewController.swift in Sources */,
 				FE10F3961FBD100000385CF6 /* FindStoreViewController.swift in Sources */,
+				FE4D667E2003187800202334 /* CategoryViewController.swift in Sources */,
 				FE094F031FB7C99E00B82435 /* StoreDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

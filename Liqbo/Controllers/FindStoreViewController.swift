@@ -213,7 +213,7 @@ class FindStoreViewController: UIViewController, CLLocationManagerDelegate, UISe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                print (arrayOfSearchStores[indexPath.row].sundayHours)
+        print(arrayOfSearchStores[indexPath.row].sundayHours)
         itemDataToSendToDetailedView = arrayOfSearchStores[indexPath.row]
         print("This cell from the chat list was selected: \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: true)
